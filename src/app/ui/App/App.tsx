@@ -1,14 +1,21 @@
+import { CurrentTime } from '@/features/CurrentTime';
+import { LocationIdentifier } from '@/features/LocationIdentifier';
+import { CurrentWeather } from '@/features/CurrentWeather';
+import { ForecastWeather } from '@/features/ForecastWeather';
+
 import '@/shared/styles/index.scss';
 
 export const App = () => {
     return (
         <main>
-            <div style={{
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-            }}> Hello world </div>
+            <div>
+                <div>
+                    <CurrentTime />
+                    <LocationIdentifier />
+                </div>
+                <CurrentWeather />
+                <ForecastWeather />
+            </div>
         </main>
     )
 }
