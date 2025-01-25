@@ -1,4 +1,5 @@
 @use 'sass:map';
+@use './fonts.scss';
 @use './styles.scss';
 @use './variables.scss' as v;
 
@@ -7,20 +8,20 @@
 }
 
 html {
-    font-size: calc(16/1920 * 100vw);
+    font-size: 16px;
     font-weight: 400;
 }
 
 html * {
-    // font-family: map.get(v.$font-family, 'primary');
-    line-height: 1.5;
+    font-family: map.get(v.$font-family, 'primary');
+    line-height: 100%;
 }
 
 body {
     margin: 0;
     min-height: 100svh;
-    background-color: #1C1C1C;
-    color: white;
+    background-color: #23324F;
+    color: map.get(v.$color, 'white', 'regular');
 
     & * {
         box-sizing: border-box;

@@ -1,12 +1,17 @@
+import cn from "classnames";
+import styles from './CurrentWeather.module.scss';
+
 export const CurrentWeather = ({ currentWeather }) => {
     const sign = currentWeather.main.temp > 0 ? '+' :
         currentWeather.main.temp < 0 ? '-' : '';
         
     return (
-        <div>
-            <div> 
-                <div> { sign + currentWeather.main.temp }° </div>
-                <div>
+        <div className={cn(styles.CurrentWeather)}>
+            <div className={cn(styles['CurrentWeather__top'])}> 
+                <div className={cn(styles['CurrentWeather__temp'])}> 
+                    { sign + currentWeather.main.temp }° 
+                </div>
+                <div className={cn(styles['CurrentWeather__description-wrapper'])}>
                     <div>
                         { currentWeather.weather.description }
                     </div>
@@ -15,7 +20,7 @@ export const CurrentWeather = ({ currentWeather }) => {
                     </div>
                 </div>
             </div>
-            <div>
+            <div className={cn(styles['CurrentWeather__bottom'])}>
                 <div>
                     Wind { currentWeather.wind.speed } k/m
                 </div>

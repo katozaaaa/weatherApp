@@ -1,0 +1,31 @@
+@use 'sass:map';
+@use '@/shared/styles/variables.scss' as v;
+
+.App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &__window {
+        max-width: 998px;
+        min-height: 470px;
+        width: 100%;
+        background-color: map.get(v.$color, 'black', 'transparent', '40');
+    }
+
+    &__main {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        padding: 30px;
+    }
+
+    &__header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+    }
+}

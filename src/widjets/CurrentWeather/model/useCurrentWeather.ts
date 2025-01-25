@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { getCurrentWeather } from '../api/getCurrentWeather';
 
 interface CurrentWeatherState {
     weather: {
@@ -25,37 +26,23 @@ interface CurrentWeatherState {
 
 type CurrentWeatherStateOrNull = CurrentWeatherState | null;
 
-export const useCurrentWeather = (location) => {
+export const useCurrentWeather = (locationCoords) => {
     const [currentWeather, setCurrentWeather] = useState<CurrentWeatherStateOrNull>(null);
 
     useEffect(() => {
-        const timerID = setTimeout(() => {
-            setCurrentWeather({
-                weather: {
-                    id: 0,
-                    description: 'Partly Cloudy',
-                },
-                main: {
-                    temp: 17,
-                    feelsLike: 10,
-                    pressure: 1024,
-                    humidity: 67,
-                },
-                wind: {
-                    speed: 4.09,
-                    deg: 121,
-                },
-                clouds: 76,
-                sys: {
-                    sunrise: 1726636384,
-                    sunset: 1726680975,
-                },
-                timezone: 7200,
-            })
-        }, 1000);
+        setTimeout(async () => {
+            const currentWeather = await getCurrentWeather(locationCoords);
+            setCurrentWeather(currentWeather);
+        })
+        
+        const timerID = setInterval(async () => {
+            const currentWeather = await getCurrentWeather(locationCoords);
+            console.log(currentWeather);
+            setCurrentWeather(currentWeather);
+        }, 60000);
 
-        return () => { clearTimeout(timerID) };
-    }, [location]);
+        return () => { clearInterval(timerID) };
+    }, [locationCoords]);
 
-    return [currentWeather, setCurrentWeather];
+    return currentWeather;
 }

@@ -1,26 +1,31 @@
-import { useState } from 'react';
+import cn from "classnames";
+import styles from './SearchLocation.module.scss';
+import { getLocationCoordsByLocationName } from "../api/getLocationCoordsByLocationName";
 
 export const SearchLocation = (props) => {
     const {
-        setLocation
+        locationName,
+        setLocationName,
+        setLocationCoords,
     } = props;
 
-    const [value, setValue] = useState('Moscow, Russia');
-
     const onInput = (e) => {
-        setValue(e.currentTarget);
+        setLocationName(e.currentTarget.value);
     }
 
     const onEnter = (e) => {
         if (e.keyCode === 13) {
-            setLocation(e.currentTarget);
+            const locationCoords = getLocationCoordsByLocationName(locationName);
+            setLocationCoords(locationCoords);
         } 
     }
 
     return (
         <input 
+            className={cn(styles.SearchLocation)}
             type={'text'}
-            value={value}
+            value={locationName}
+            placeholder='Enter a locality'
             onKeyUp={onEnter}
             onInput={onInput}
         />

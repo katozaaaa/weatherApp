@@ -1,0 +1,35 @@
+@use 'sass:map';
+@use '@/shared/styles/variables.scss' as v;
+
+.CurrentWeather {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    &__top {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 30px;
+    }
+    
+    &__temp {
+        font-size: 128px;
+        font-weight: 500;
+        letter-spacing: 10px;
+        font-family: map.get(v.$font-family, 'secondary');
+    }
+
+    &__description-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    &__bottom {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 30px;
+    }
+}

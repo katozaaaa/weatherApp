@@ -1,0 +1,23 @@
+@use 'sass:map';
+@use '@/shared/styles/variables.scss' as v;
+
+.FindLocationByIP {
+    display: flex;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+
+    svg path {
+        fill: map.get(v.$color, 'white', 'transparent', '60');
+        transition: all 150ms ease-out;
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            svg path {
+                fill: map.get(v.$color, 'white', 'regular');
+            }
+        }
+    }
+}

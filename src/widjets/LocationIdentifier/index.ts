@@ -1,0 +1,1 @@
+export { LocationIdentifier } from './ui/LocationIdentifier';

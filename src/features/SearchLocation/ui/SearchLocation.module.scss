@@ -1,0 +1,25 @@
+@use 'sass:map';
+@use '@/shared/styles/variables.scss' as v;
+
+.SearchLocation {
+    padding-bottom: 5px;
+    min-width: 300px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid map.get(v.$color, 'white', 'regular');
+    font-size: 16px;
+    background-color: transparent;
+    color: map.get(v.$color, 'white', 'transparent', '60');
+
+    &::placeholder {
+        color: map.get(v.$color, 'white', 'transparent', '60');
+    }
+    
+    &:focus {
+        &::placeholder {
+            color: map.get(v.$color, 'white', 'regular');
+        }
+
+        color: map.get(v.$color, 'white', 'regular');
+    }
+}
