@@ -1,7 +1,32 @@
 import { useState, useEffect } from 'react';
 
+interface CurrentWeatherState {
+    weather: {
+        id: number,
+        description: string,
+    },
+    main: {
+        temp: number,
+        feelsLike: number,
+        pressure: number,
+        humidity: number,
+    },
+    wind: {
+        speed: number,
+        deg: number,
+    },
+    clouds: number,
+    sys: {
+        sunrise: number,
+        sunset: number,
+    },
+    timezone: number,
+}
+
+type CurrentWeatherStateOrNull = CurrentWeatherState | null;
+
 export const useCurrentWeather = (location) => {
-    const [currentWeather, setCurrentWeather] = useState(null);
+    const [currentWeather, setCurrentWeather] = useState<CurrentWeatherStateOrNull>(null);
 
     useEffect(() => {
         const timerID = setTimeout(() => {
