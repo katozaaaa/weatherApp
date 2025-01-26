@@ -4,6 +4,7 @@ import styles from './App.module.scss';
 import { CurrentTime } from '@/widjets/CurrentTime';
 import { LocationIdentifier } from '@/widjets/LocationIdentifier';
 import { CurrentWeather, useCurrentWeather } from '@/widjets/CurrentWeather';
+import { Loader } from '@/widjets/Loader';
 // import { ForecastWeather } from '@/widjets/ForecastWeather';
 
 import '@/shared/styles/index.scss';
@@ -17,21 +18,28 @@ export const App = () => {
             <div className={cn(styles['App__window'])}>
                 <div className={cn(styles['App__main'])}>
                     <div className={cn(styles['App__header'])}>
-                        <CurrentTime timezone={7200} />
+                        { currentWeather &&
+                            <CurrentTime timezone={currentWeather.timezone} />
+                        }
                         <LocationIdentifier 
+                            className={cn(styles['App__location-identifier'])}
                             setLocationCoords={setLocationCoords}
                         />
                     </div>
                     <div className={cn(styles['App__body'])}>
-                        { 
-                            currentWeather && 
-                            <CurrentWeather currentWeather={currentWeather}/>
+                        { currentWeather && 
+                            <CurrentWeather currentWeather={currentWeather}/>  
                         }
                     </div>
                 </div>
-                <div className={cn(styles['App__footer'])}>
+                { currentWeather &&
+                    <div className={cn(styles['App__footer'])}>
 
-                </div>
+                    </div>
+                }
+                { locationCoords.lat && locationCoords.lon && !currentWeather &&
+                    <Loader className={cn(styles['App__loader'])}/>
+                }
             </div>
         </main>
     )

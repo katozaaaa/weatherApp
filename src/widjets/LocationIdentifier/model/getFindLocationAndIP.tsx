@@ -9,6 +9,7 @@ export const getFindLocationAndIP = (dispatchers) => {
         );
 
         const ip = await getIP();
+        console.log(ip);
         const location = await getLocationByIP(ip);
         
         clearInterval(animationIntervalID);

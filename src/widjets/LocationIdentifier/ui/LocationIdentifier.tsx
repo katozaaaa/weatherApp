@@ -5,7 +5,12 @@ import { SearchLocation } from "@/features/SearchLocation";
 import { FindLocationByIP } from '@/features/FindLocationByIP';
 import { getFindLocationAndIP } from '../model/getFindLocationAndIP';
 
-export const LocationIdentifier = ({ setLocationCoords }) => {
+export const LocationIdentifier = (props) => {
+    const {
+        className,
+        setLocationCoords,
+    } = props;
+
     const [locationName, setLocationName] = useState('');
     const [isSearching, setIsSearching] = useState(false);
 
@@ -20,7 +25,7 @@ export const LocationIdentifier = ({ setLocationCoords }) => {
     }, []);
 
     return (
-        <div className={cn(styles.LocationIdentifier)}>
+        <div className={cn(styles.LocationIdentifier, className)}>
             <SearchLocation 
                 locationName={locationName}
                 setLocationName={setLocationName}

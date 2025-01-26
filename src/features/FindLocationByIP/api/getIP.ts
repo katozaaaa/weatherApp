@@ -1,8 +1,8 @@
 export const getIP = () => {
     if (import.meta.env.MODE === 'development') {
-        return new Promise<string>((resolve) => {
+        return new Promise((resolve) => {
             setTimeout(() => {
-                resolve('8.8.8.8');
+                resolve(__MOCK_IP__);
             }, 1000)
         });
     }

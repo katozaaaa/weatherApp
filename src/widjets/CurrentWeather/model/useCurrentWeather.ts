@@ -30,18 +30,20 @@ export const useCurrentWeather = (locationCoords) => {
     const [currentWeather, setCurrentWeather] = useState<CurrentWeatherStateOrNull>(null);
 
     useEffect(() => {
-        setTimeout(async () => {
+        const timeoutID = setTimeout(async () => {
             const currentWeather = await getCurrentWeather(locationCoords);
             setCurrentWeather(currentWeather);
         })
         
-        const timerID = setInterval(async () => {
+        const intervalID = setInterval(async () => {
             const currentWeather = await getCurrentWeather(locationCoords);
-            console.log(currentWeather);
             setCurrentWeather(currentWeather);
         }, 60000);
 
-        return () => { clearInterval(timerID) };
+        return () => { 
+            clearTimeout(timeoutID);
+            clearInterval(intervalID); 
+        };
     }, [locationCoords]);
 
     return currentWeather;

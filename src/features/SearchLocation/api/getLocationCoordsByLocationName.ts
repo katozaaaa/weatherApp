@@ -1,11 +1,15 @@
 export const getLocationCoordsByLocationName = (locationName: string) => {
     if (import.meta.env.MODE === 'development') {
-        return new Promise((resolve) => {
+        return new Promise((resolve, reject) => {
             setTimeout(() => { 
-                resolve({
-                    lat: 1034,
-                    lon: 1345,
-                }) 
+                if (locationName === 'Moscow, Russia') {
+                    resolve({
+                        lat: 37.386,
+                        lon: -122.0838,
+                    }) 
+                } else {
+                    reject('There is no such location.')
+                }
             }, 1000);
         });
     }
