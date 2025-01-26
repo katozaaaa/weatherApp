@@ -22,4 +22,10 @@
 
         color: map.get(v.$color, 'white', 'regular');
     }
+    
+    &[disabled="disabled"],
+    &:disabled {
+        user-select: none;
+        cursor: wait;
+    }
 }

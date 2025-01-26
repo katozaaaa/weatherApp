@@ -20,4 +20,14 @@
             }
         }
     }
+
+    &[disabled="disabled"],
+    &:disabled {
+        user-select: none;
+        cursor: wait;
+
+        svg path {
+            fill: map.get(v.$color, 'white', 'transparent', '30');
+        }
+    }
 }

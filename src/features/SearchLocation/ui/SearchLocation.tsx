@@ -7,6 +7,7 @@ export const SearchLocation = (props) => {
         locationName,
         setLocationName,
         setLocationCoords,
+        isSearching,
     } = props;
 
     const onInput = (e) => {
@@ -28,6 +29,7 @@ export const SearchLocation = (props) => {
             placeholder='Enter a locality'
             onKeyUp={onEnter}
             onInput={onInput}
+            disabled={isSearching}
         />
     );
 }
