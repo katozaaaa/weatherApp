@@ -12,10 +12,10 @@ export const CurrentWeather = ({ currentWeather }) => {
                     { sign + currentWeather.main.temp }° 
                 </div>
                 <div className={cn(styles['CurrentWeather__description-wrapper'])}>
-                    <div>
+                    <div className={cn(styles['CurrentWeather__description'])}>
                         { currentWeather.weather.description }
                     </div>
-                    <div>
+                    <div className={cn(styles['CurrentWeather__feels-like'])}>
                         Feels like { currentWeather.main.feelsLike }°
                     </div>
                 </div>
