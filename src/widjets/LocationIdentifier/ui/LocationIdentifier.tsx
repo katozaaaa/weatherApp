@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import cn from 'classnames';
 import styles from './LocationIdentifier.module.scss';
-import { SearchLocation } from "@/features/SearchLocation";
-import { FindLocationByIP } from '@/features/FindLocationByIP';
-import { getFindLocationAndIP } from '../model/getFindLocationAndIP';
+import { SearchLocationByIP } from '@/features/SearchLocationByIP';
+import { SearchLocation } from '@/features/SearchLocation';
+import { setupSearchingAnimation } from '../model/animateSearching';
+import { getSearchLocationByIP } from '../model/getSearchLocationByIP';
 
 export const LocationIdentifier = (props) => {
     const {
@@ -13,15 +14,36 @@ export const LocationIdentifier = (props) => {
 
     const [locationName, setLocationName] = useState('');
     const [isSearching, setIsSearching] = useState(false);
+    
+    let animationIntervalID;
 
-    const findLocationAndIP = getFindLocationAndIP({
-        setIsSearching,
-        setLocationName,
-        setLocationCoords,
-    });
+    const onStartSearching = () => {
+        clearInterval(animationIntervalID);
+        setIsSearching(true);
+        animationIntervalID = setupSearchingAnimation(setLocationName);
+    }
+    
+    const onFullfilledSearching = (location) => {
+        clearInterval(animationIntervalID);
+        setIsSearching(false);
+
+        setLocationName(
+            [location['city'], location['country_name']].join(', ')
+        );
+
+        setLocationCoords({ 
+            lat: location.latitude, 
+            lon: location.longitude 
+        });
+    }
+
+    const searchLocationByIP = getSearchLocationByIP(
+        onStartSearching, 
+        onFullfilledSearching
+    );
 
     useEffect(() => {
-        findLocationAndIP();
+        searchLocationByIP();
     }, []);
 
     return (
@@ -32,8 +54,8 @@ export const LocationIdentifier = (props) => {
                 setLocationCoords={setLocationCoords}
                 isSearching={isSearching}
             />
-            <FindLocationByIP 
-                findLocationAndIP={findLocationAndIP}
+            <SearchLocationByIP 
+                searchLocationAndIP={searchLocationByIP}
                 isSearching={isSearching}
             />
         </div>

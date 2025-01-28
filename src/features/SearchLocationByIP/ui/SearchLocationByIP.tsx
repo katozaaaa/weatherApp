@@ -1,17 +1,16 @@
 import cn from 'classnames';
-import styles from './FindLocationByIP.module.scss';
-import { findLocationByIP } from '../model/findLocationByIP';
+import styles from './SearchLocationByIP.module.scss';
 
-export const FindLocationByIP = (props) => {
+export const SearchLocationByIP = (props) => {
     const {
-        findLocationAndIP,
+        searchLocationAndIP,
         isSearching
     } = props;
 
     return (
         <button 
-            className={cn(styles.FindLocationByIP)}
-            onClick={findLocationAndIP}
+            className={cn(styles.SearchLocationByIP)}
+            onClick={searchLocationAndIP}
             disabled={isSearching}
         >
             <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
