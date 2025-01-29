@@ -14,9 +14,9 @@ export const SearchLocation = (props) => {
         setLocationName(e.currentTarget.value);
     }
 
-    const onEnter = (e) => {
+    const onEnter = async (e) => {
         if (e.keyCode === 13) {
-            const locationCoords = getLocationCoordsByLocationName(locationName);
+            const locationCoords = await getLocationCoordsByLocationName(locationName);
             setLocationCoords(locationCoords);
         } 
     }

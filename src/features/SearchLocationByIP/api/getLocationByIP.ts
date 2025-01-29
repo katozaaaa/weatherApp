@@ -8,6 +8,13 @@ export const getLocationByIP = (ip: string) => {
                     resolve(mockData[ip])
                 }
             }, 1000);
-        })
+        }).then((location) => {
+            return {
+                placeName: location['city'],
+                countryName: location['country_name'],
+                lat: location['latitude'], 
+                lon: location['longitude'],
+            }
+        });
     }
 }

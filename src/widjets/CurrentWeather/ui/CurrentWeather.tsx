@@ -9,14 +9,14 @@ export const CurrentWeather = ({ currentWeather }) => {
         <div className={cn(styles.CurrentWeather)}>
             <div className={cn(styles['CurrentWeather__top'])}> 
                 <div className={cn(styles['CurrentWeather__temp'])}> 
-                    { sign + currentWeather.main.temp }° 
+                    { sign + Math.round(currentWeather.main.temp) }° 
                 </div>
                 <div className={cn(styles['CurrentWeather__description-wrapper'])}>
                     <div className={cn(styles['CurrentWeather__description'])}>
                         { currentWeather.weather.description }
                     </div>
                     <div className={cn(styles['CurrentWeather__feels-like'])}>
-                        Feels like { currentWeather.main.feelsLike }°
+                        Feels like { Math.round(currentWeather.main.feelsLike) }°
                     </div>
                 </div>
             </div>

@@ -28,12 +28,12 @@ export const LocationIdentifier = (props) => {
         setIsSearching(false);
 
         setLocationName(
-            [location['city'], location['country_name']].join(', ')
+            [location.placeName, location.countryName].join(', ')
         );
 
         setLocationCoords({ 
-            lat: location.latitude, 
-            lon: location.longitude 
+            lat: location.lat, 
+            lon: location.lon 
         });
     }
 
