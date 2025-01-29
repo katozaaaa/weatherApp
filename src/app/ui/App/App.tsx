@@ -1,17 +1,21 @@
-import { useState } from 'react';
 import cn from 'classnames';
 import styles from './App.module.scss';
 import { CurrentTime } from '@/widjets/CurrentTime';
 import { LocationIdentifier } from '@/widjets/LocationIdentifier';
 import { CurrentWeather, useCurrentWeather } from '@/widjets/CurrentWeather';
+import { useLocationCoords } from '@/widjets/LocationIdentifier';
 import { Loader } from '@/widjets/Loader';
 // import { ForecastWeather } from '@/widjets/ForecastWeather';
 
 import '@/shared/styles/index.scss';
 
 export const App = () => {
-    const [locationCoords, setLocationCoords] = useState({ lat: null, lon: null});
-    const currentWeather = useCurrentWeather(locationCoords);
+    const [locationCoords, dispatchLocationCoords] = useLocationCoords();
+    const [currentWeather, setCurrentWeather] = useCurrentWeather(locationCoords);
+
+    const clearCurrentWeather = () => {
+        setCurrentWeather(null);
+    }
 
     return (
         <main className={cn(styles.App)}>
@@ -23,7 +27,8 @@ export const App = () => {
                         }
                         <LocationIdentifier 
                             className={cn(styles['App__location-identifier'])}
-                            setLocationCoords={setLocationCoords}
+                            dispatchLocationCoords={dispatchLocationCoords}
+                            clearCurrentWeather={clearCurrentWeather}
                         />
                     </div>
                     <div className={cn(styles['App__body'])}>
@@ -37,7 +42,7 @@ export const App = () => {
 
                     </div>
                 }
-                { locationCoords.lat && locationCoords.lon && !currentWeather &&
+                { !currentWeather &&
                     <Loader className={cn(styles['App__loader'])}/>
                 }
             </div>

@@ -46,5 +46,5 @@ export const useCurrentWeather = (locationCoords) => {
         };
     }, [locationCoords]);
 
-    return currentWeather;
+    return [currentWeather, setCurrentWeather];
 }

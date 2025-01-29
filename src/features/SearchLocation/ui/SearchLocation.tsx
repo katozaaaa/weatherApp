@@ -5,19 +5,34 @@ import { getLocationCoordsByLocationName } from "../api/getLocationCoordsByLocat
 export const SearchLocation = (props) => {
     const {
         locationName,
-        setLocationName,
-        setLocationCoords,
+        dispatchLocationName,
+        dispatchLocationCoords,
         isSearching,
+        clearCurrentWeather
     } = props;
 
     const onInput = (e) => {
-        setLocationName(e.currentTarget.value);
+        dispatchLocationName({
+            type: 'updated',
+            locationName: e.currentTarget.value,
+        });
     }
 
     const onEnter = async (e) => {
         if (e.keyCode === 13) {
+            clearCurrentWeather();
+            dispatchLocationCoords({
+                type: 'cleared',
+            });
+
             const locationCoords = await getLocationCoordsByLocationName(locationName);
-            setLocationCoords(locationCoords);
+            dispatchLocationCoords({
+                type: 'updated',
+                location: {
+                    lat: locationCoords.lat,
+                    lon: locationCoords.lon
+                }
+            })
         } 
     }
 

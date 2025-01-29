@@ -5,14 +5,16 @@ import { SearchLocationByIP } from '@/features/SearchLocationByIP';
 import { SearchLocation } from '@/features/SearchLocation';
 import { setupSearchingAnimation } from '../model/animateSearching';
 import { getSearchLocationByIP } from '../model/getSearchLocationByIP';
+import { useLocationName } from '../model/useLocationName';
 
 export const LocationIdentifier = (props) => {
     const {
         className,
-        setLocationCoords,
+        dispatchLocationCoords,
+        clearCurrentWeather
     } = props;
 
-    const [locationName, setLocationName] = useState('');
+    const [locationName, dispatchLocationName] = useLocationName();
     const [isSearching, setIsSearching] = useState(false);
     
     let animationIntervalID;
@@ -20,21 +22,33 @@ export const LocationIdentifier = (props) => {
     const onStartSearching = () => {
         clearInterval(animationIntervalID);
         setIsSearching(true);
-        animationIntervalID = setupSearchingAnimation(setLocationName);
+
+        animationIntervalID = setupSearchingAnimation((locationName) => {
+            dispatchLocationName({
+                type: 'updated',
+                locationName: locationName,
+            })
+        });
     }
     
     const onFullfilledSearching = (location) => {
         clearInterval(animationIntervalID);
         setIsSearching(false);
 
-        setLocationName(
-            [location.placeName, location.countryName].join(', ')
-        );
-
-        setLocationCoords({ 
-            lat: location.lat, 
-            lon: location.lon 
+        dispatchLocationName({
+            type: 'updated',
+            locationName: [location.placeName, location.countryName].join(', '),
         });
+
+        dispatchLocationCoords({
+            type: 'updated',
+            location: { 
+                lat: location.lat, 
+                lon: location.lon 
+            }
+        });
+
+        clearCurrentWeather();
     }
 
     const searchLocationByIP = getSearchLocationByIP(
@@ -50,9 +64,10 @@ export const LocationIdentifier = (props) => {
         <div className={cn(styles.LocationIdentifier, className)}>
             <SearchLocation 
                 locationName={locationName}
-                setLocationName={setLocationName}
-                setLocationCoords={setLocationCoords}
+                dispatchLocationName={dispatchLocationName}
+                dispatchLocationCoords={dispatchLocationCoords}
                 isSearching={isSearching}
+                clearCurrentWeather={clearCurrentWeather}
             />
             <SearchLocationByIP 
                 searchLocationAndIP={searchLocationByIP}
