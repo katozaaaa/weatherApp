@@ -4,5 +4,5 @@ export const getSearchLocationByLocationName = (onStartSearching, onFullfilledSe
     return async (locationName) => {
         onStartSearching();
         getLocationByLocationName(locationName).then(onFullfilledSearching);
-    }
-}
+    };
+};

@@ -3,7 +3,7 @@ export const getIP = () => {
         return new Promise((resolve) => {
             setTimeout(() => {
                 resolve(__MOCK_IP__);
-            }, 1000)
+            }, 1000);
         });
     }
-}
+};

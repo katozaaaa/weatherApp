@@ -7,5 +7,5 @@ export const getSearchLocationByIP = (onStartSearching, onFullfilledSearching) =
         getIP().then((ip) => {
             getLocationByIP(ip).then(onFullfilledSearching);
         });
-    }
-}
+    };
+};

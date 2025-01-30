@@ -1,4 +1,4 @@
-import cn from "classnames";
+import cn from 'classnames';
 import styles from './CurrentWeather.module.scss';
 
 export const CurrentWeather = ({ currentWeather }) => {
@@ -35,5 +35,5 @@ export const CurrentWeather = ({ currentWeather }) => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};

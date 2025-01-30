@@ -14,11 +14,11 @@ export const useCurrentWeather = (locationCoords) => {
                 if (currentWeather) {
                     dispatchCurrentWeather({
                         type: 'updated',
-                        currentWeather: currentWeather,
+                        currentWeather: currentWeather
                     });
                 } else {
                     dispatchCurrentWeather({
-                        type: 'cleared',
+                        type: 'cleared'
                     });
                 }
             }  
@@ -38,4 +38,4 @@ export const useCurrentWeather = (locationCoords) => {
     }, [locationCoords]);
 
     return [currentWeather.current, dispatchCurrentWeather];
-}
+};

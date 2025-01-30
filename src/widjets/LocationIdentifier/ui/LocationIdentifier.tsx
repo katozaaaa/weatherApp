@@ -22,8 +22,8 @@ export const LocationIdentifier = (props) => {
             type: 'updated',
             locationName: [
                 location.placeName, 
-                location.countryName || '',
-            ].join(', '),
+                location.countryName || ''
+            ].join(', ')
         });
 
         dispatchLocationCoords({
@@ -32,31 +32,31 @@ export const LocationIdentifier = (props) => {
                 lat: location.lat,
                 lon: location.lon
             }
-        })
-    }
+        });
+    };
 
     const onStartSearchingByLocationName = () => {
         clearCurrentWeather();
 
         dispatchLocationCoords({
-            type: 'cleared',
+            type: 'cleared'
         });
-    }
+    };
 
     const searchLocationByLocationName = getSearchLocationByLocationName(
         onStartSearchingByLocationName,
-        updateLocation,
-    )
+        updateLocation
+    );
 
     const onStartSearchingByIP = () => {
         setIsSearching(true);
-    }
+    };
     
     const onFullfilledSearchingByIP = (location) => {
         setIsSearching(false);
         updateLocation(location);
         clearCurrentWeather();
-    }
+    };
 
     const searchLocationByIP = getSearchLocationByIP(
         onStartSearchingByIP, 
@@ -80,5 +80,5 @@ export const LocationIdentifier = (props) => {
                 isSearching={isSearching}
             />
         </div>
-    )
-}
+    );
+};

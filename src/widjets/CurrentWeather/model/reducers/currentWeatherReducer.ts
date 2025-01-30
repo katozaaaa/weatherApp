@@ -1,4 +1,4 @@
-import { produce } from "immer";
+import { produce } from 'immer';
 
 interface CurrentWeatherState {
     current: {
@@ -27,20 +27,20 @@ interface CurrentWeatherState {
 
 export const currentWeatherReducer = produce((draft, action) => {
     switch(action.type) {
-        case 'updated': {
-            draft.current = {
-                ...action.currentWeather,
-            };
+    case 'updated': {
+        draft.current = {
+            ...action.currentWeather
+        };
 
-            break;
-        }
-        case 'cleared': {
-            draft.current = null;
-
-            break;
-        }
-        default: {
-            break;
-        }
+        break;
     }
-})
+    case 'cleared': {
+        draft.current = null;
+
+        break;
+    }
+    default: {
+        break;
+    }
+    }
+});

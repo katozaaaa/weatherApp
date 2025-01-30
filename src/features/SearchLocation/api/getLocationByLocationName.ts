@@ -1,4 +1,4 @@
-import { mockData } from "../model/data/mockData";
+import { mockData } from '../model/data/mockData';
 
 export const getLocationByLocationName = (locationName: string) => {
     if (import.meta.env.MODE === 'development') {
@@ -13,8 +13,8 @@ export const getLocationByLocationName = (locationName: string) => {
                 placeName: location.name,
                 countryName: location?.countryName,
                 lat: location.lat,
-                lon: location.lng,
-            }
+                lon: location.lng
+            };
         });
     }
-}
+};

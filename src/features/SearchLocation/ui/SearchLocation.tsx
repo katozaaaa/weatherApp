@@ -1,27 +1,27 @@
-import cn from "classnames";
+import cn from 'classnames';
 import styles from './SearchLocation.module.scss';
-import { getLocationByLocationName } from "../api/getLocationByLocationName";
+import { getLocationByLocationName } from '../api/getLocationByLocationName';
 
 export const SearchLocation = (props) => {
     const {
         locationName,
         dispatchLocationName,
         searchLocationByLocationName,
-        isSearching,
+        isSearching
     } = props;
 
     const onInput = (e) => {
         dispatchLocationName({
             type: 'updated',
-            locationName: e.currentTarget.value,
+            locationName: e.currentTarget.value
         });
-    }
+    };
 
     const onEnter = async (e) => {
         if (e.keyCode === 13) {
             searchLocationByLocationName(locationName);
         } 
-    }
+    };
 
     return (
         <div 
@@ -41,4 +41,4 @@ export const SearchLocation = (props) => {
         </div>
         
     );
-}
+};

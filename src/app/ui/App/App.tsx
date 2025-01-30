@@ -15,9 +15,9 @@ export const App = () => {
 
     const clearCurrentWeather = () => {
         dispatchCurrentWeather({
-            type: 'cleared',
+            type: 'cleared'
         });
-    }
+    };
 
     return (
         <main className={cn(styles.App)}>
@@ -49,5 +49,5 @@ export const App = () => {
                 }
             </div>
         </main>
-    )
-}
+    );
+};

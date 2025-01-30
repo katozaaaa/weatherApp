@@ -1,11 +1,11 @@
-import { mockData } from "../model/data/mockData";
+import { mockData } from '../model/data/mockData';
 
 export const getLocationByIP = (ip: string) => {
     if (import.meta.env.MODE === 'development') {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                 if (mockData.hasOwnProperty(ip)) {
-                    resolve(mockData[ip])
+                    resolve(mockData[ip]);
                 }
             }, 1000);
         }).then((location) => {
@@ -13,8 +13,8 @@ export const getLocationByIP = (ip: string) => {
                 placeName: location['city'],
                 countryName: location['country_name'],
                 lat: location['latitude'], 
-                lon: location['longitude'],
-            }
+                lon: location['longitude']
+            };
         });
     }
-}
+};

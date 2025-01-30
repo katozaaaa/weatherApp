@@ -16,12 +16,12 @@ export const CurrentTime = ({ timezone }) => {
             ));
         }, 1000);
 
-        return () => { clearInterval(timerID) };
-    }, [timezone])
+        return () => { clearInterval(timerID); };
+    }, [timezone]);
 
     return (
         <div>
             Now { currentTime }
         </div>
-    )
-}
+    );
+};
