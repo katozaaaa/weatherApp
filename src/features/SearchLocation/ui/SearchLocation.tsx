@@ -6,9 +6,8 @@ export const SearchLocation = (props) => {
     const {
         locationName,
         dispatchLocationName,
-        dispatchLocationCoords,
+        searchLocationByLocationName,
         isSearching,
-        clearCurrentWeather
     } = props;
 
     const onInput = (e) => {
@@ -20,19 +19,7 @@ export const SearchLocation = (props) => {
 
     const onEnter = async (e) => {
         if (e.keyCode === 13) {
-            clearCurrentWeather();
-            dispatchLocationCoords({
-                type: 'cleared',
-            });
-
-            const locationCoords = await getLocationCoordsByLocationName(locationName);
-            dispatchLocationCoords({
-                type: 'updated',
-                location: {
-                    lat: locationCoords.lat,
-                    lon: locationCoords.lon
-                }
-            })
+            searchLocationByLocationName(locationName);
         } 
     }
 

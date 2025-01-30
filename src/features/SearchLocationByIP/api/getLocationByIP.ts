@@ -1,4 +1,4 @@
-import { mockData } from "../model/mockData";
+import { mockData } from "../model/data/mockData";
 
 export const getLocationByIP = (ip: string) => {
     if (import.meta.env.MODE === 'development') {

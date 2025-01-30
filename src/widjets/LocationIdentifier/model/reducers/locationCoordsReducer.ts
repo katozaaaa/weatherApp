@@ -1,4 +1,4 @@
-export const locationCoordsReducer = (_, action) => {
+export const locationCoordsReducer = (state, action) => {
     switch(action.type) {
         case 'updated': {
             return {
@@ -13,7 +13,7 @@ export const locationCoordsReducer = (_, action) => {
             }
         }
         default: {
-            throw new Error('Unknown action: ' + action.type);
+            return state;
         }
     }
 }

@@ -4,7 +4,8 @@ import styles from './LocationIdentifier.module.scss';
 import { SearchLocationByIP } from '@/features/SearchLocationByIP';
 import { getSearchLocationByIP } from '@/features/SearchLocationByIP';
 import { SearchLocation } from '@/features/SearchLocation';
-import { useLocationName } from '../model/useLocationName';
+import { useLocationName } from '../model/hooks/useLocationName';
+import { getSearchLocationByLocationName } from '@/features/SearchLocation';
 
 export const LocationIdentifier = (props) => {
     const {
@@ -16,32 +17,50 @@ export const LocationIdentifier = (props) => {
     const [locationName, dispatchLocationName] = useLocationName();
     const [isSearching, setIsSearching] = useState(false);
 
-    const onStartSearching = () => {
-        setIsSearching(true);
-    }
-    
-    const onFullfilledSearching = (location) => {
-        setIsSearching(false);
-
+    const updateLocation = (location) => {
         dispatchLocationName({
             type: 'updated',
-            locationName: [location.placeName, location.countryName].join(', '),
+            locationName: [
+                location.placeName, 
+                location.countryName || '',
+            ].join(', '),
         });
 
         dispatchLocationCoords({
             type: 'updated',
-            location: { 
-                lat: location.lat, 
-                lon: location.lon 
+            location: {
+                lat: location.lat,
+                lon: location.lon
             }
-        });
+        })
+    }
 
+    const onStartSearchingByLocationName = () => {
+        clearCurrentWeather();
+
+        dispatchLocationCoords({
+            type: 'cleared',
+        });
+    }
+
+    const searchLocationByLocationName = getSearchLocationByLocationName(
+        onStartSearchingByLocationName,
+        updateLocation,
+    )
+
+    const onStartSearchingByIP = () => {
+        setIsSearching(true);
+    }
+    
+    const onFullfilledSearchingByIP = (location) => {
+        setIsSearching(false);
+        updateLocation(location);
         clearCurrentWeather();
     }
 
     const searchLocationByIP = getSearchLocationByIP(
-        onStartSearching, 
-        onFullfilledSearching
+        onStartSearchingByIP, 
+        onFullfilledSearchingByIP
     );
 
     useEffect(() => {
@@ -53,9 +72,8 @@ export const LocationIdentifier = (props) => {
             <SearchLocation 
                 locationName={locationName}
                 dispatchLocationName={dispatchLocationName}
-                dispatchLocationCoords={dispatchLocationCoords}
+                searchLocationByLocationName={searchLocationByLocationName}
                 isSearching={isSearching}
-                clearCurrentWeather={clearCurrentWeather}
             />
             <SearchLocationByIP 
                 searchLocationByIP={searchLocationByIP}

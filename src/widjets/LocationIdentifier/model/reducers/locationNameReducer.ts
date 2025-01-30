@@ -1,4 +1,4 @@
-export const locationNameReducer = (_, action) => {
+export const locationNameReducer = (state, action) => {
     switch(action.type) {
         case 'updated': {
             return action.locationName;
@@ -7,7 +7,7 @@ export const locationNameReducer = (_, action) => {
             return '';
         }
         default: {
-            throw new Error('Unknown action: ' + action.type);
+            return state;
         }
     }
 }

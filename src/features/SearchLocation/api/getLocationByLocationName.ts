@@ -1,4 +1,4 @@
-import { mockData } from "../model/mockData";
+import { mockData } from "../model/data/mockData";
 
 export const getLocationByLocationName = (locationName: string) => {
     if (import.meta.env.MODE === 'development') {

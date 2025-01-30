@@ -11,10 +11,12 @@ import '@/shared/styles/index.scss';
 
 export const App = () => {
     const [locationCoords, dispatchLocationCoords] = useLocationCoords();
-    const [currentWeather, setCurrentWeather] = useCurrentWeather(locationCoords);
+    const [currentWeather, dispatchCurrentWeather] = useCurrentWeather(locationCoords);
 
     const clearCurrentWeather = () => {
-        setCurrentWeather(null);
+        dispatchCurrentWeather({
+            type: 'cleared',
+        });
     }
 
     return (

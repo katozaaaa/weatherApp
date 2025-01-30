@@ -1,4 +1,4 @@
-import { mockData } from "../model/mockData"
+import { mockData } from "../model/data/mockData"
 
 export const getCurrentWeather = (locationCoords) => {
     if (import.meta.env.MODE === 'development') {
