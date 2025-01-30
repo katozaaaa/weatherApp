@@ -2,9 +2,8 @@ import { useState, useEffect } from 'react';
 import cn from 'classnames';
 import styles from './LocationIdentifier.module.scss';
 import { SearchLocationByIP } from '@/features/SearchLocationByIP';
+import { getSearchLocationByIP } from '@/features/SearchLocationByIP';
 import { SearchLocation } from '@/features/SearchLocation';
-import { setupSearchingAnimation } from '../model/animateSearching';
-import { getSearchLocationByIP } from '../model/getSearchLocationByIP';
 import { useLocationName } from '../model/useLocationName';
 
 export const LocationIdentifier = (props) => {
@@ -16,23 +15,12 @@ export const LocationIdentifier = (props) => {
 
     const [locationName, dispatchLocationName] = useLocationName();
     const [isSearching, setIsSearching] = useState(false);
-    
-    let animationIntervalID;
 
     const onStartSearching = () => {
-        clearInterval(animationIntervalID);
         setIsSearching(true);
-
-        animationIntervalID = setupSearchingAnimation((locationName) => {
-            dispatchLocationName({
-                type: 'updated',
-                locationName: locationName,
-            })
-        });
     }
     
     const onFullfilledSearching = (location) => {
-        clearInterval(animationIntervalID);
         setIsSearching(false);
 
         dispatchLocationName({
@@ -70,7 +58,7 @@ export const LocationIdentifier = (props) => {
                 clearCurrentWeather={clearCurrentWeather}
             />
             <SearchLocationByIP 
-                searchLocationAndIP={searchLocationByIP}
+                searchLocationByIP={searchLocationByIP}
                 isSearching={isSearching}
             />
         </div>

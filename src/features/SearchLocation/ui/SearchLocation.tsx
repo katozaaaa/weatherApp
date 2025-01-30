@@ -1,6 +1,6 @@
 import cn from "classnames";
 import styles from './SearchLocation.module.scss';
-import { getLocationCoordsByLocationName } from "../api/getLocationCoordsByLocationName";
+import { getLocationByLocationName } from "../api/getLocationByLocationName";
 
 export const SearchLocation = (props) => {
     const {
@@ -37,14 +37,21 @@ export const SearchLocation = (props) => {
     }
 
     return (
-        <input 
-            className={cn(styles.SearchLocation)}
-            type={'text'}
-            value={locationName}
-            placeholder='Enter a locality'
-            onKeyUp={onEnter}
-            onInput={onInput}
-            disabled={isSearching}
-        />
+        <div 
+            className={cn(
+                styles.SearchLocation,
+                isSearching && styles['SearchLocation--searching']
+            )}
+        >
+            <input 
+                type={'text'}
+                value={locationName}
+                placeholder='Enter a locality'
+                onKeyUp={onEnter}
+                onInput={onInput}
+            />
+            { isSearching && <span className={cn(styles['SearchLocation__searching-placeholder'])}></span> }
+        </div>
+        
     );
 }

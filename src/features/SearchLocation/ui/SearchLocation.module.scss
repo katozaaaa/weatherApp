@@ -2,30 +2,72 @@
 @use '@/shared/styles/variables.scss' as v;
 
 .SearchLocation {
-    padding-bottom: 5px;
-    min-width: 300px;
-    border: none;
-    outline: none;
-    border-bottom: 1px solid map.get(v.$color, 'white', 'regular');
-    font-size: 16px;
-    background-color: transparent;
-    color: map.get(v.$color, 'white', 'transparent', '60');
+    position: relative;
 
-    &::placeholder {
+    &__searching-placeholder {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+
+        &:before {
+            content: 'Determining the location.';
+            animation-name: searching-location;
+            animation-timing-function: linear;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+        }
+    }
+
+    input, &__searching-placeholder {
+        padding-bottom: 5px;
+        min-width: 300px;
+        border: none;
+        outline: none;
+        border-bottom: 1px solid map.get(v.$color, 'white', 'regular');
+        font-size: 16px;
+        background-color: transparent;
         color: map.get(v.$color, 'white', 'transparent', '60');
     }
-    
-    &:focus {
+
+    input {
         &::placeholder {
+            color: map.get(v.$color, 'white', 'transparent', '60');
+        }
+        
+        &:focus {
+            &::placeholder {
+                color: map.get(v.$color, 'white', 'regular');
+            }
+
             color: map.get(v.$color, 'white', 'regular');
         }
-
-        color: map.get(v.$color, 'white', 'regular');
+        
+        &[disabled="disabled"],
+        &:disabled {
+            user-select: none;
+        }
     }
-    
-    &[disabled="disabled"],
-    &:disabled {
-        user-select: none;
-        cursor: wait;
+
+    &--searching {
+        &:before {
+            visibility: visible;
+        }
+        
+        input {
+            visibility: hidden;
+        }
+    }
+
+    @keyframes searching-location {
+        0% {
+            content: 'Determining the location.';
+        }
+        33% {
+            content: 'Determining the location..';
+        }
+        66% {
+            content: 'Determining the location...';
+        }
     }
 }
