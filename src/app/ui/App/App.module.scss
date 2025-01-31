@@ -8,6 +8,7 @@
     justify-content: center;
 
     &__window {
+        position: relative;
         display: flex;
         flex-direction: column;
         max-width: 998px;
@@ -47,5 +48,11 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+    }
+
+    &__window-background {
+        position: absolute;
+        z-index: -1;
+        inset: 0;
     }
 }

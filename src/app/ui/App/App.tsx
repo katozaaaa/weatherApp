@@ -3,6 +3,7 @@ import styles from './App.module.scss';
 import { CurrentTime } from '@/widjets/CurrentTime';
 import { LocationIdentifier } from '@/widjets/LocationIdentifier';
 import { CurrentWeather, useCurrentWeather } from '@/widjets/CurrentWeather';
+import { WindowBackground } from '@/widjets/WindowBackground/';
 import { useLocationCoords } from '@/widjets/LocationIdentifier';
 import { Loader } from '@/widjets/Loader';
 // import { ForecastWeather } from '@/widjets/ForecastWeather';
@@ -43,6 +44,18 @@ export const App = () => {
                     <div className={cn(styles['App__footer'])}>
 
                     </div>
+                }
+                { currentWeather &&
+                    <WindowBackground 
+                        className={cn(styles['App__window-background'])}
+                        weatherData={{
+                            id: currentWeather.main.id,
+                            clouds: currentWeather.clouds,
+                            timezone: currentWeather.timezone,
+                            sunset: currentWeather.sys.sunset,
+                            sunrise: currentWeather.sys.sunrise,
+                        }}
+                    />
                 }
                 { !currentWeather &&
                     <Loader className={cn(styles['App__loader'])}/>
