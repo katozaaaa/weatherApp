@@ -1,17 +1,6 @@
-export const toLocaleDate = (date: Date, timezone) => {
-    const offset = date.getTimezoneOffset() * 60 * 1000;
-    
-    const localeDate = new Date(
-        Date.UTC(
-            date.getFullYear(),
-            date.getMonth(),
-            date.getDate(),
-            date.getHours(),
-            date.getMinutes(),
-            date.getSeconds(),
-            date.getMilliseconds(),
-        ) + offset * 2 + timezone * 1000
-    );
+import { toUTCMilliseconds } from "./toUTCMilliseconds";
 
-    return localeDate;
+export const toLocaleDate = (date: Date, timezone: number) => {
+    const offset = date.getTimezoneOffset() * 60 * 1000;
+    return new Date(toUTCMilliseconds(date) + offset + timezone * 1000);
 }

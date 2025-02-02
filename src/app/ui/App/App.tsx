@@ -49,8 +49,8 @@ export const App = () => {
                     <WindowBackground 
                         className={cn(styles['App__window-background'])}
                         weatherData={{
-                            id: currentWeather.main.id,
-                            clouds: currentWeather.clouds,
+                            id: currentWeather.weather.id,
+                            clouds: currentWeather.clouds.all,
                             timezone: currentWeather.timezone,
                             sunset: currentWeather.sys.sunset,
                             sunrise: currentWeather.sys.sunrise,

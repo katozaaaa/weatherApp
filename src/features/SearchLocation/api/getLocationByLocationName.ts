@@ -4,9 +4,8 @@ export const getLocationByLocationName = (locationName: string) => {
     if (import.meta.env.MODE === 'development') {
         return new Promise((resolve, reject) => {
             setTimeout(() => { 
-                if (mockData.hasOwnProperty(locationName)) {
-                    resolve(mockData[locationName]['geonames'][0]);
-                }
+                const key = Object.keys(mockData).find((key) => key.includes(locationName));
+                resolve(mockData[key]['geonames'][0]);
             }, 1000);
         }).then((location) => {
             return {
