@@ -53,7 +53,7 @@ export const App = () => {
                             clouds: currentWeather.clouds.all,
                             timezone: currentWeather.timezone,
                             sunset: currentWeather.sys.sunset,
-                            sunrise: currentWeather.sys.sunrise,
+                            sunrise: currentWeather.sys.sunrise
                         }}
                     />
                 }

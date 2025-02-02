@@ -1,5 +1,5 @@
-import { useCallback } from "react";
-import { getIP, getLocationByIP } from "@/features/SearchLocationByIP";
+import { useCallback } from 'react';
+import { getIP, getLocationByIP } from '@/features/SearchLocationByIP';
 
 export const useSearchLocationByIP = (dispatchers) => {
     const {
@@ -21,4 +21,4 @@ export const useSearchLocationByIP = (dispatchers) => {
     }, []);
 
     return searchLocationByIP;
-}
+};

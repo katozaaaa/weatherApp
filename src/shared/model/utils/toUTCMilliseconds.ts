@@ -8,6 +8,6 @@ export const toUTCMilliseconds = (date: Date) => {
         date.getHours(),
         date.getMinutes(),
         date.getSeconds(),
-        date.getMilliseconds(),
+        date.getMilliseconds()
     ) + offset;
-}
+};

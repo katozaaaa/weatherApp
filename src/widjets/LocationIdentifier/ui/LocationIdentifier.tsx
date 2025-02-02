@@ -25,14 +25,14 @@ export const LocationIdentifier = (props) => {
     const searchLocationByIP = useSearchLocationByIP({
         updateLocation,
         setIsSearching,
-        clearCurrentWeather,
-    })
+        clearCurrentWeather
+    });
 
     const searchLocationByLocationName = useSearchLocationByLocationName({
         updateLocation,
         dispatchLocationCoords,
-        clearCurrentWeather,
-    })
+        clearCurrentWeather
+    });
 
     useEffect(() => {
         searchLocationByIP();

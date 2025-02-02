@@ -1,11 +1,11 @@
-import { toUTCMilliseconds } from "@/shared";
+import { toUTCMilliseconds } from '@/shared';
 
 export const getWindowBackground = (weatherData) => {
     const windowBackground = {
-        fileName: null,
-    }
+        fileName: null
+    };
 
-    let fileName = ['window-background'];
+    const fileName = ['window-background'];
 
     if (weatherData.id !== 800 || weatherData.clouds > 25) {
         fileName.push(weatherData.clouds <= 50 ? 'half-cloud-sky' : 'cloud-sky');
@@ -21,4 +21,4 @@ export const getWindowBackground = (weatherData) => {
     windowBackground.fileName = fileName.join('_');
 
     return windowBackground;
-}
+};
