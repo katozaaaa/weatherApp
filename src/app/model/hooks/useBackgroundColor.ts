@@ -41,4 +41,4 @@ export const useBackgroundColor = (weatherData) => {
     }, [weatherData]);
 
     return backgroundColor;
-}
+};

@@ -9,19 +9,19 @@ import { Loader } from '@/widjets/Loader';
 import { useBackgroundColor } from '../../model/hooks/useBackgroundColor';
 // import { ForecastWeather } from '@/widjets/ForecastWeather';
 
-import '@/shared/styles/index.scss'
+import '@/shared/styles/index.scss';
 
 export const App = () => {
     const [locationCoords, dispatchLocationCoords] = useLocationCoords();
     const [currentWeather, dispatchCurrentWeather] = useCurrentWeather(locationCoords);
     const clearCurrentWeather = useClearCurrentWeather(dispatchCurrentWeather);
-    const backgroundColor = useBackgroundColor(currentWeather)
+    const backgroundColor = useBackgroundColor(currentWeather);
 
     return (
         <main 
             className={cn(styles.App)}
             style={{
-                backgroundColor: backgroundColor,
+                backgroundColor: backgroundColor
             }}
         >
             <div className={cn(styles['App__window'])}>

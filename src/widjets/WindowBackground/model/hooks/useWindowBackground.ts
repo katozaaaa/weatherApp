@@ -10,7 +10,7 @@ export const useWindowBackground = (weatherData) => {
     
         let weather = '';
 
-        console.log(weatherData.weather.id, weatherData.clouds.all)
+        console.log(weatherData.weather.id, weatherData.clouds.all);
     
         if (!isClear(weatherData)) {
             if (isScatteredClouds(weatherData)) {
@@ -34,11 +34,11 @@ export const useWindowBackground = (weatherData) => {
         windowBackground.fileName = [
             'window-background',
             weather,
-            timeOfDay,
+            timeOfDay
         ].join('_');
 
         return windowBackground;
     }, [weatherData]);
 
     return windowBackground;
-}
+};
