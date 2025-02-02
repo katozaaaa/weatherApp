@@ -2,8 +2,7 @@ import cn from 'classnames';
 import styles from './CurrentWeather.module.scss';
 
 export const CurrentWeather = ({ currentWeather }) => {
-    const sign = currentWeather.main.temp > 0 ? '+' :
-        currentWeather.main.temp < 0 ? '-' : '';
+    const sign = currentWeather.main.temp > 0 ? '+' : '';
         
     return (
         <div className={cn(styles.CurrentWeather)}>

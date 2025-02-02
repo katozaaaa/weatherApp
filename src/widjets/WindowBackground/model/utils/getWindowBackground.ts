@@ -7,8 +7,6 @@ export const getWindowBackground = (weatherData) => {
 
     let fileName = ['window-background'];
 
-    console.log(weatherData.id, weatherData.clouds)
-
     if (weatherData.id !== 800 || weatherData.clouds > 25) {
         fileName.push(weatherData.clouds <= 50 ? 'half-cloud-sky' : 'cloud-sky');
     } else {
@@ -17,7 +15,7 @@ export const getWindowBackground = (weatherData) => {
 
     const now = toUTCMilliseconds(new Date());
 
-    const isNight = now < weatherData.sunrize * 1000 || now >= weatherData.sunset * 1000;
+    const isNight = now < weatherData.sunrise * 1000 || now >= weatherData.sunset * 1000;
     fileName.push(isNight ? 'night' : 'day');
 
     windowBackground.fileName = fileName.join('_');

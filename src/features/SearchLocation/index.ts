@@ -1,2 +1,3 @@
 export { SearchLocation } from './ui/SearchLocation';
-export { getSearchLocationByLocationName } from './model/utils/getSearchLocationByLocationName';
+export { useLocationName } from './model/hooks/useLocationName';
+export { getLocationByLocationName } from './api/getLocationByLocationName';
