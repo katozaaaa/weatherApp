@@ -1,20 +1,23 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
+import { toLocaleDate, getTimeString } from '@/shared';
 
 export const CurrentTime = ({ timezone }) => {
     const [currentTime, setCurrentTime] = useState('');
 
+    const updateTime = useCallback(() => {
+        setCurrentTime(
+            getTimeString(
+                toLocaleDate(
+                    new Date(), 
+                    timezone
+                )
+            )
+        );
+    }, [timezone]);
+
     useEffect(() => {
-        const now = new Date(Date.now() + timezone);
-        setCurrentTime(now.toLocaleTimeString(
-            'en-EN', { hour: '2-digit', minute: '2-digit' }
-        ));
-        
-        const timerID = setInterval(() => {
-            const now = new Date(Date.now() + timezone);
-            setCurrentTime(now.toLocaleTimeString(
-                'en-EN', { hour: '2-digit', minute: '2-digit' }
-            ));
-        }, 1000);
+        updateTime();
+        const timerID = setInterval(updateTime, 1000);
 
         return () => { clearInterval(timerID); };
     }, [timezone]);

@@ -1,207 +1,27 @@
 export const mockData = {
     'St Petersburg, Russia': {
-        'totalResultsCount': 499,
-        'geonames': [
-            {
-                'adminCode1': '66',
-                'lng': '30.31413',
-                'geonameId': 498817,
-                'toponymName': 'Saint Petersburg',
-                'countryId': '2017370',
-                'fcl': 'P',
-                'population': 5351935,
-                'countryCode': 'RU',
-                'name': 'St Petersburg',
-                'fclName': 'city, village,...',
-                'adminCodes1': {
-                    'ISO3166_2': 'SPE'
-                },
-                'countryName': 'Russia',
-                'fcodeName': 'seat of a first-order administrative division',
-                'adminName1': 'St.-Petersburg',
-                'lat': '59.93863',
-                'fcode': 'PPLA'
+        "totalResultsCount": 9657,
+        "geonames": [
+          {
+            "adminCode1": "66",
+            "lng": "30.31413",
+            "geonameId": 498817,
+            "toponymName": "Saint Petersburg",
+            "countryId": "2017370",
+            "fcl": "P",
+            "population": 5351935,
+            "countryCode": "RU",
+            "name": "St Petersburg",
+            "fclName": "city, village,...",
+            "adminCodes1": {
+              "ISO3166_2": "SPE"
             },
-            {
-                'adminCode1': '66',
-                'lng': '30.25',
-                'geonameId': 536203,
-                'toponymName': 'Sankt-Peterburg',
-                'countryId': '2017370',
-                'fcl': 'A',
-                'population': 5351935,
-                'countryCode': 'RU',
-                'name': 'St.-Petersburg',
-                'fclName': 'country, state, region,...',
-                'adminCodes1': {
-                    'ISO3166_2': 'SPE'
-                },
-                'countryName': 'Russia',
-                'fcodeName': 'first-order administrative division',
-                'adminName1': 'St.-Petersburg',
-                'lat': '59.91667',
-                'fcode': 'ADM1'
-            },
-            {
-                'adminCode1': '66',
-                'lng': '30.58856',
-                'geonameId': 546105,
-                'toponymName': 'Kolpino',
-                'countryId': '2017370',
-                'fcl': 'P',
-                'population': 138979,
-                'countryCode': 'RU',
-                'name': 'Kolpino',
-                'fclName': 'city, village,...',
-                'adminCodes1': {
-                    'ISO3166_2': 'SPE'
-                },
-                'countryName': 'Russia',
-                'fcodeName': 'populated place',
-                'adminName1': 'St.-Petersburg',
-                'lat': '59.75069',
-                'fcode': 'PPL'
-            },
-            {
-                'adminCode1': '66',
-                'lng': '29.70183',
-                'geonameId': 463830,
-                'toponymName': 'Zelenogorsk',
-                'countryId': '2017370',
-                'fcl': 'P',
-                'population': 14958,
-                'countryCode': 'RU',
-                'name': 'Zelenogorsk',
-                'fclName': 'city, village,...',
-                'adminCodes1': {
-                    'ISO3166_2': 'SPE'
-                },
-                'countryName': 'Russia',
-                'fcodeName': 'populated place',
-                'adminName1': 'St.-Petersburg',
-                'lat': '60.19968',
-                'fcode': 'PPL'
-            },
-            {
-                'adminCode1': '66',
-                'lng': '30.31128',
-                'geonameId': 513471,
-                'toponymName': 'Ozerki',
-                'countryId': '2017370',
-                'fcl': 'P',
-                'population': 95000,
-                'countryCode': 'RU',
-                'name': 'Ozerki',
-                'fclName': 'city, village,...',
-                'adminCodes1': {
-                    'ISO3166_2': 'SPE'
-                },
-                'countryName': 'Russia',
-                'fcodeName': 'section of populated place',
-                'adminName1': 'St.-Petersburg',
-                'lat': '60.03947',
-                'fcode': 'PPLX'
-            },
-            {
-                'adminCode1': '66',
-                'lng': '30.35',
-                'geonameId': 461698,
-                'toponymName': 'Sosnovka',
-                'countryId': '2017370',
-                'fcl': 'P',
-                'population': 66227,
-                'countryCode': 'RU',
-                'name': 'Sosnovka',
-                'fclName': 'city, village,...',
-                'adminCodes1': {
-                    'ISO3166_2': 'SPE'
-                },
-                'countryName': 'Russia',
-                'fcodeName': 'section of populated place',
-                'adminName1': 'St.-Petersburg',
-                'lat': '60.01667',
-                'fcode': 'PPLX'
-            },
-            {
-                'adminCode1': '66',
-                'lng': '30.25377',
-                'geonameId': 8504949,
-                'toponymName': "Vasyl'evsky Ostrov",
-                'countryId': '2017370',
-                'fcl': 'P',
-                'population': 203058,
-                'countryCode': 'RU',
-                'name': "Vasyl'evsky Ostrov",
-                'fclName': 'city, village,...',
-                'adminCodes1': {
-                    'ISO3166_2': 'SPE'
-                },
-                'countryName': 'Russia',
-                'fcodeName': 'section of populated place',
-                'adminName1': 'St.-Petersburg',
-                'lat': '59.94091',
-                'fcode': 'PPLX'
-            },
-            {
-                'adminCode1': '66',
-                'lng': '30.3899',
-                'geonameId': 8504951,
-                'toponymName': 'Kalininskiy',
-                'countryId': '2017370',
-                'fcl': 'P',
-                'population': 504641,
-                'countryCode': 'RU',
-                'name': 'Kalininskiy',
-                'fclName': 'city, village,...',
-                'adminCodes1': {
-                    'ISO3166_2': 'SPE'
-                },
-                'countryName': 'Russia',
-                'fcodeName': 'section of populated place',
-                'adminName1': 'St.-Petersburg',
-                'lat': '59.99675',
-                'fcode': 'PPLX'
-            },
-            {
-                'adminCode1': '66',
-                'lng': '29.77253',
-                'geonameId': 534341,
-                'toponymName': 'Lomonosov',
-                'countryId': '2017370',
-                'fcl': 'P',
-                'population': 42505,
-                'countryCode': 'RU',
-                'name': 'Lomonosov',
-                'fclName': 'city, village,...',
-                'adminCodes1': {
-                    'ISO3166_2': 'SPE'
-                },
-                'countryName': 'Russia',
-                'fcodeName': 'populated place',
-                'adminName1': 'St.-Petersburg',
-                'lat': '59.90612',
-                'fcode': 'PPL'
-            },
-            {
-                'adminCode1': '66',
-                'lng': '29.80145',
-                'geonameId': 510225,
-                'toponymName': 'Petrodvorets',
-                'countryId': '2017370',
-                'fcl': 'P',
-                'population': 61973,
-                'countryCode': 'RU',
-                'name': 'Petrodvorets',
-                'fclName': 'city, village,...',
-                'adminCodes1': {
-                    'ISO3166_2': 'SPE'
-                },
-                'countryName': 'Russia',
-                'fcodeName': 'populated place',
-                'adminName1': 'St.-Petersburg',
-                'lat': '59.89565',
-                'fcode': 'PPL'
-            }
+            "countryName": "Russia",
+            "fcodeName": "seat of a first-order administrative division",
+            "adminName1": "St.-Petersburg",
+            "lat": "59.93863",
+            "fcode": "PPLA"
+          }
         ]
     },
     'Seattle, United States': {

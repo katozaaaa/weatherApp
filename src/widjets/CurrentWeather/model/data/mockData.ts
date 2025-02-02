@@ -1,48 +1,51 @@
 export const mockData = {
     'lat=59.93863&lon=30.31413': {
-        'coord': {
-            'lon': 30.3141,
-            'lat': 59.9386
+        "coord": {
+          "lon": 30.3096,
+          "lat": 59.9417
         },
-        'weather': [
-            {
-                'id': 804,
-                'main': 'Clouds',
-                'description': 'overcast clouds',
-                'icon': '04d'
-            }
+        "weather": [
+          {
+            "id": 620,
+            "main": "Snow",
+            "description": "light shower snow",
+            "icon": "13d"
+          }
         ],
-        'base': 'stations',
-        'main': {
-            'temp': 3.33,
-            'feels_like': -0.75,
-            'temp_min': 3.05,
-            'temp_max': 3.33,
-            'pressure': 1009,
-            'humidity': 96,
-            'sea_level': 1009,
-            'grnd_level': 1006
+        "base": "stations",
+        "main": {
+          "temp": 0.65,
+          "feels_like": -3.49,
+          "temp_min": 0.65,
+          "temp_max": 1.14,
+          "pressure": 1010,
+          "humidity": 94,
+          "sea_level": 1010,
+          "grnd_level": 1008
         },
-        'visibility': 4400,
-        'wind': {
-            'speed': 5,
-            'deg': 110
+        "visibility": 6000,
+        "wind": {
+          "speed": 4,
+          "deg": 360
         },
-        'clouds': {
-            'all': 100
+        "snow": {
+          "1h": 0.12
         },
-        'dt': 1738136439,
-        'sys': {
-            'type': 2,
-            'id': 197864,
-            'country': 'RU',
-            'sunrise': 1738131551,
-            'sunset': 1738159462
+        "clouds": {
+          "all": 75
         },
-        'timezone': 10800,
-        'id': 519690,
-        'name': 'Novaya Gollandiya',
-        'cod': 200
+        "dt": 1738502445,
+        "sys": {
+          "type": 2,
+          "id": 197864,
+          "country": "RU",
+          "sunrise": 1738476603,
+          "sunset": 1738505689
+        },
+        "timezone": 10800,
+        "id": 519690,
+        "name": "Novaya Gollandiya",
+        "cod": 200
     },
     'lat=47.60621&lon=-122.33207': {
         'coord': {
@@ -89,5 +92,4 @@ export const mockData = {
         'name': 'Seattle',
         'cod': 200
     }
-
 };
