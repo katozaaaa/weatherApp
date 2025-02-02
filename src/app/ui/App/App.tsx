@@ -6,17 +6,24 @@ import { CurrentWeather, useCurrentWeather, useClearCurrentWeather } from '@/wid
 import { WindowBackground } from '@/widjets/WindowBackground/';
 import { useLocationCoords } from '@/widjets/LocationIdentifier';
 import { Loader } from '@/widjets/Loader';
+import { useBackgroundColor } from '../../model/hooks/useBackgroundColor';
 // import { ForecastWeather } from '@/widjets/ForecastWeather';
 
-import '@/shared/styles/index.scss';
+import '@/shared/styles/index.scss'
 
 export const App = () => {
     const [locationCoords, dispatchLocationCoords] = useLocationCoords();
     const [currentWeather, dispatchCurrentWeather] = useCurrentWeather(locationCoords);
     const clearCurrentWeather = useClearCurrentWeather(dispatchCurrentWeather);
+    const backgroundColor = useBackgroundColor(currentWeather)
 
     return (
-        <main className={cn(styles.App)}>
+        <main 
+            className={cn(styles.App)}
+            style={{
+                backgroundColor: backgroundColor,
+            }}
+        >
             <div className={cn(styles['App__window'])}>
                 <div className={cn(styles['App__main'])}>
                     <div className={cn(styles['App__header'])}>
@@ -43,13 +50,7 @@ export const App = () => {
                 { currentWeather &&
                     <WindowBackground 
                         className={cn(styles['App__window-background'])}
-                        weatherData={{
-                            id: currentWeather.weather.id,
-                            clouds: currentWeather.clouds.all,
-                            timezone: currentWeather.timezone,
-                            sunset: currentWeather.sys.sunset,
-                            sunrise: currentWeather.sys.sunrise
-                        }}
+                        weatherData={currentWeather}
                     />
                 }
                 { !currentWeather &&

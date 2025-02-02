@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { toUTCMilliseconds } from '@/shared';
+import { isClear, isScatteredClouds, isNight } from '@/shared';
 
 export const useWindowBackground = (weatherData) => {
     const windowBackground = useMemo(() => {
@@ -7,20 +8,34 @@ export const useWindowBackground = (weatherData) => {
             fileName: null
         };
     
-        const fileName = ['window-background'];
+        let weather = '';
+
+        console.log(weatherData.weather.id, weatherData.clouds.all)
     
-        if (weatherData.id !== 800 || weatherData.clouds > 25) {
-            fileName.push(weatherData.clouds <= 50 ? 'half-cloud-sky' : 'cloud-sky');
+        if (!isClear(weatherData)) {
+            if (isScatteredClouds(weatherData)) {
+                weather = 'half-cloud-sky';
+            } else {
+                weather = 'cloud-sky';
+            }
         } else {
-            fileName.push('clean-sky');
+            weather = 'clean-sky';
+        }
+        
+        let timeOfDay = '';
+        const now = toUTCMilliseconds(new Date());
+
+        if (isNight(Object.assign({ now: now }, weatherData))) {
+            timeOfDay = 'night';
+        } else {
+            timeOfDay = 'day';
         }
     
-        const now = toUTCMilliseconds(new Date());
-    
-        const isNight = now < weatherData.sunrise * 1000 || now >= weatherData.sunset * 1000;
-        fileName.push(isNight ? 'night' : 'day');
-    
-        windowBackground.fileName = fileName.join('_');
+        windowBackground.fileName = [
+            'window-background',
+            weather,
+            timeOfDay,
+        ].join('_');
 
         return windowBackground;
     }, [weatherData]);
