@@ -1,9 +1,9 @@
 import cn from 'classnames';
 import styles from './WindowBackground.module.scss';
-import { getWindowBackground } from '../model/utils/getWindowBackground';
+import { useWindowBackground } from '../model/hooks/useWindowBackground';
 
 export const WindowBackground = ({ className, weatherData }) => {
-    const windowBackground = getWindowBackground(weatherData);
+    const windowBackground = useWindowBackground(weatherData);
 
     return (
         <picture 

@@ -8,7 +8,7 @@ export const useCurrentWeather = (locationCoords) => {
         { current: null }
     );
 
-    const updateCurrentWeather = useCallback(async (expire) => {
+    const updateCurrentWeather = useCallback((expire) => {
         getCurrentWeather(locationCoords).then((currentWeather) => {
             if (!expire.current) {
                 if (currentWeather) {
