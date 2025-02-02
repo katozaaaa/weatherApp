@@ -1,6 +1,5 @@
 import cn from 'classnames';
 import styles from './SearchLocation.module.scss';
-import { getLocationByLocationName } from '../api/getLocationByLocationName';
 
 export const SearchLocation = (props) => {
     const {

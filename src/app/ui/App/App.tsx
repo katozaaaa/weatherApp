@@ -2,7 +2,7 @@ import cn from 'classnames';
 import styles from './App.module.scss';
 import { CurrentTime } from '@/widjets/CurrentTime';
 import { LocationIdentifier } from '@/widjets/LocationIdentifier';
-import { CurrentWeather, useCurrentWeather } from '@/widjets/CurrentWeather';
+import { CurrentWeather, useCurrentWeather, useClearCurrentWeather } from '@/widjets/CurrentWeather';
 import { WindowBackground } from '@/widjets/WindowBackground/';
 import { useLocationCoords } from '@/widjets/LocationIdentifier';
 import { Loader } from '@/widjets/Loader';
@@ -13,12 +13,7 @@ import '@/shared/styles/index.scss';
 export const App = () => {
     const [locationCoords, dispatchLocationCoords] = useLocationCoords();
     const [currentWeather, dispatchCurrentWeather] = useCurrentWeather(locationCoords);
-
-    const clearCurrentWeather = () => {
-        dispatchCurrentWeather({
-            type: 'cleared'
-        });
-    };
+    const clearCurrentWeather = useClearCurrentWeather(dispatchCurrentWeather);
 
     return (
         <main className={cn(styles.App)}>
