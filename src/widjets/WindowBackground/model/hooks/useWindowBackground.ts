@@ -1,6 +1,11 @@
 import { useMemo } from 'react';
-import { toUTCMilliseconds } from '@/shared';
-import { isClear, isScatteredClouds, isNight } from '@/shared';
+import {
+    getNow, 
+    toUTCMilliseconds, 
+    isClear, 
+    isScatteredClouds, 
+    isNight 
+} from '@/shared';
 
 export const useWindowBackground = (weatherData) => {
     const windowBackground = useMemo(() => {
@@ -9,8 +14,6 @@ export const useWindowBackground = (weatherData) => {
         };
     
         let weather = '';
-
-        console.log(weatherData.weather.id, weatherData.clouds.all);
     
         if (!isClear(weatherData)) {
             if (isScatteredClouds(weatherData)) {
@@ -23,7 +26,7 @@ export const useWindowBackground = (weatherData) => {
         }
         
         let timeOfDay = '';
-        const now = toUTCMilliseconds(new Date());
+        const now = toUTCMilliseconds(getNow());
 
         if (isNight(Object.assign({ now: now }, weatherData))) {
             timeOfDay = 'night';

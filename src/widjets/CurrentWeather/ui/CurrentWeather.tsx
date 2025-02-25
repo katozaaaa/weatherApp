@@ -1,5 +1,6 @@
 import cn from 'classnames';
 import styles from './CurrentWeather.module.scss';
+import { getWindDirection } from '@/shared';
 
 export const CurrentWeather = ({ currentWeather }) => {
     const sign = currentWeather.main.temp > 0 ? '+' : '';
@@ -24,7 +25,7 @@ export const CurrentWeather = ({ currentWeather }) => {
                     Wind { currentWeather.wind.speed } k/m
                 </div>
                 <div>
-                    Direction { currentWeather.wind.deg }
+                    Direction { getWindDirection(currentWeather.wind.deg) }
                 </div>
                 <div>
                     Humidity { currentWeather.main.humidity }%

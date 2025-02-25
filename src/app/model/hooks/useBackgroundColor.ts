@@ -3,7 +3,8 @@ import {
     isClear, 
     isScatteredClouds, 
     isNight,
-    toUTCMilliseconds
+    toUTCMilliseconds,
+    getNow,
 } from '@/shared';
 
 export const useBackgroundColor = (weatherData) => {
@@ -14,7 +15,7 @@ export const useBackgroundColor = (weatherData) => {
 
         let backgroundColor = '';
 
-        const now = toUTCMilliseconds(new Date());
+        const now = toUTCMilliseconds(getNow());
         const weatherDataWithTime = Object.assign({ now: now }, weatherData);
 
         if (isClear(weatherData)) {

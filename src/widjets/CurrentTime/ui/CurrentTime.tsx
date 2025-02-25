@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { toLocaleDate, getTimeString } from '@/shared';
+import { toLocaleDate, getTimeString, getNow } from '@/shared';
 
 export const CurrentTime = ({ timezone }) => {
     const [currentTime, setCurrentTime] = useState('');
@@ -8,7 +8,7 @@ export const CurrentTime = ({ timezone }) => {
         setCurrentTime(
             getTimeString(
                 toLocaleDate(
-                    new Date(), 
+                    getNow(), 
                     timezone
                 )
             )
