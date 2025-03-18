@@ -1,6 +1,4 @@
 export const getWindDirection = (deg: number) => {
-    console.log(deg)
-    
     if (deg >= 337.5 || deg < 22.5) {
         return 'N';
     } else if (deg >= 22.5 && deg < 67.5) {

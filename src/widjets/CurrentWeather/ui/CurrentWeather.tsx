@@ -1,6 +1,6 @@
 import cn from 'classnames';
 import styles from './CurrentWeather.module.scss';
-import { getWindDirection } from '@/shared';
+import { getWindDirection, WeatherIcon } from '@/shared';
 
 export const CurrentWeather = ({ currentWeather }) => {
     const sign = currentWeather.main.temp > 0 ? '+' : '';
@@ -10,6 +10,9 @@ export const CurrentWeather = ({ currentWeather }) => {
             <div className={cn(styles['CurrentWeather__top'])}> 
                 <div className={cn(styles['CurrentWeather__temp'])}> 
                     { sign + Math.round(currentWeather.main.temp) }° 
+                </div>
+                <div className={cn(styles['CurrentWeather__icon'])}>
+                <WeatherIcon weatherData={currentWeather}/>
                 </div>
                 <div className={cn(styles['CurrentWeather__description-wrapper'])}>
                     <div className={cn(styles['CurrentWeather__description'])}>
