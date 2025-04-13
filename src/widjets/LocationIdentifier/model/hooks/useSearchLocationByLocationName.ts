@@ -5,11 +5,11 @@ export const useSearchLocationByLocationName = (dispatchers) => {
     const {
         updateLocation,
         dispatchLocationCoords,
-        clearCurrentWeather
+        clearWeather
     } = dispatchers;
 
     const searchLocationByLocationName = useCallback((locationName) => {
-        clearCurrentWeather();
+        clearWeather();
 
         dispatchLocationCoords({
             type: 'cleared'

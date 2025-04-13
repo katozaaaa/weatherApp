@@ -2,20 +2,21 @@ import cn from 'classnames';
 import styles from './App.module.scss';
 import { CurrentTime } from '@/widjets/CurrentTime';
 import { LocationIdentifier } from '@/widjets/LocationIdentifier';
-import { CurrentWeather, useCurrentWeather, useClearCurrentWeather } from '@/widjets/CurrentWeather';
+import { useWeather, useClearWeather } from '@/entities/Weather';
+import { CurrentWeather } from '@/widjets/CurrentWeather';
+import { ForecastWeather } from '@/widjets/ForecastWeather';
 import { WindowBackground } from '@/widjets/WindowBackground/';
 import { useLocationCoords } from '@/widjets/LocationIdentifier';
 import { Loader } from '@/widjets/Loader';
 import { useBackgroundColor } from '../../model/hooks/useBackgroundColor';
-// import { ForecastWeather } from '@/widjets/ForecastWeather';
 
 import '@/shared/styles/index.scss';
 
 export const App = () => {
     const [locationCoords, dispatchLocationCoords] = useLocationCoords();
-    const [currentWeather, dispatchCurrentWeather] = useCurrentWeather(locationCoords);
-    const clearCurrentWeather = useClearCurrentWeather(dispatchCurrentWeather);
-    const backgroundColor = useBackgroundColor(currentWeather);
+    const [weather, dispatchWeather] = useWeather(locationCoords);
+    const clearWeather = useClearWeather(dispatchWeather);
+    const backgroundColor = useBackgroundColor(weather ? weather.current : null);
 
     return (
         <main 
@@ -27,33 +28,33 @@ export const App = () => {
             <div className={cn(styles['App__window'])}>
                 <div className={cn(styles['App__main'])}>
                     <div className={cn(styles['App__header'])}>
-                        { currentWeather &&
-                            <CurrentTime timezone={currentWeather.timezone} />
+                        { weather &&
+                            <CurrentTime timezone={weather.current.timezone} />
                         }
                         <LocationIdentifier 
                             className={cn(styles['App__location-identifier'])}
                             dispatchLocationCoords={dispatchLocationCoords}
-                            clearCurrentWeather={clearCurrentWeather}
+                            clearWeather={clearWeather}
                         />
                     </div>
                     <div className={cn(styles['App__body'])}>
-                        { currentWeather && 
-                            <CurrentWeather currentWeather={currentWeather}/>  
+                        { weather && 
+                            <CurrentWeather currentWeather={weather.current}/>  
                         }
                     </div>
                 </div>
-                { currentWeather &&
+                { weather &&
                     <div className={cn(styles['App__footer'])}>
 
                     </div>
                 }
-                { currentWeather &&
+                { weather &&
                     <WindowBackground 
                         className={cn(styles['App__window-background'])}
-                        weatherData={currentWeather}
+                        currentWeather={weather.current}
                     />
                 }
-                { !currentWeather &&
+                { !weather &&
                     <Loader className={cn(styles['App__loader'])}/>
                 }
             </div>

@@ -11,7 +11,7 @@ export const LocationIdentifier = (props) => {
     const {
         className,
         dispatchLocationCoords,
-        clearCurrentWeather
+        clearWeather
     } = props;
 
     const [locationName, dispatchLocationName] = useLocationName();
@@ -25,13 +25,13 @@ export const LocationIdentifier = (props) => {
     const searchLocationByIP = useSearchLocationByIP({
         updateLocation,
         setIsSearching,
-        clearCurrentWeather
+        clearWeather
     });
 
     const searchLocationByLocationName = useSearchLocationByLocationName({
         updateLocation,
         dispatchLocationCoords,
-        clearCurrentWeather
+        clearWeather
     });
 
     useEffect(() => {

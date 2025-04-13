@@ -1,55 +1,33 @@
 import cn from 'classnames';
 import styles from './WeatherIcon.module.scss';
-import { toUTCMilliseconds, getNow, isNight } from '@/shared';
+import { getCloudsSlug, getWeatherSlug, getTimeOfDay } from '@/shared';
 
 export const WeatherIcon = (props) => {
     const {
         weatherData
     } = props;
 
-    const weatherId = weatherData.weather.id;
-    const cloudsSlug = weatherData.clouds.all < 50 ? 10 : 50;
+    const cloudsSlug = getCloudsSlug(weatherData);
+    const weatherSlug = getWeatherSlug(weatherData);
+    const timeOfDay = getTimeOfDay(weatherData);
 
-    let timeOfDay = '';
-    const now = toUTCMilliseconds(getNow());
+    let slugs = [];
 
-    if (isNight(Object.assign({ now: now }, weatherData))) {
-        timeOfDay = 'night';
-    } else {
-        timeOfDay = 'day';
+    if (weatherSlug === 'clear') {
+        slugs = ['no-clouds', timeOfDay];
+    } else if (weatherSlug !== 'thunderstorm' && weatherSlug !== 'atmosphere') {
+        if (cloudsSlug !== 'overcast-clouds') {
+            slugs = ['scattered-clouds', timeOfDay];
+        } else {
+            slugs = [cloudsSlug];
+        }
     }
 
-    let fileNameArray = ['weather-icon'];
-
-    if (weatherId === 800) {
-        fileNameArray.push(timeOfDay);
-    } else if (weatherId >= 800) {
-        if (cloudsSlug === 10) {
-            fileNameArray.push('clouds', cloudsSlug, timeOfDay);
-        } else {
-            fileNameArray.push('clouds', cloudsSlug);
-        }
-    } else if (weatherId >= 700) {
-        fileNameArray.push('fog');
-    } else if (weatherId >= 600) {
-        if (cloudsSlug === 10) {
-            fileNameArray.push('snow', cloudsSlug, timeOfDay);
-        } else {
-            fileNameArray.push('snow', cloudsSlug);
-        }
-    } else if (weatherId >= 300) {
-        if (cloudsSlug === 10) {
-            fileNameArray.push('rain', cloudsSlug, timeOfDay);
-        } else {
-            fileNameArray.push('rain', cloudsSlug);
-        }
-    } else {
-        fileNameArray.push('thunderstorm');
-    }
+    let fileNameArray = ['weather-icon', weatherSlug, ...slugs];
 
     return (
         <>
-            <img src={`./images/${fileNameArray.join('-')}.svg`} ></img>
+            <img src={`./images/${fileNameArray.join('_')}.svg`} ></img>
         </>
     );
 }

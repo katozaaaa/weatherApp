@@ -16,10 +16,10 @@ export const CurrentWeather = ({ currentWeather }) => {
                 </div>
                 <div className={cn(styles['CurrentWeather__description-wrapper'])}>
                     <div className={cn(styles['CurrentWeather__description'])}>
-                        { currentWeather.weather.description }
+                        { currentWeather.weather[0].description }
                     </div>
                     <div className={cn(styles['CurrentWeather__feels-like'])}>
-                        Feels like { Math.round(currentWeather.main.feelsLike) }°
+                        Feels like { Math.round(currentWeather.main.feels_like) }°
                     </div>
                 </div>
             </div>

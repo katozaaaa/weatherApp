@@ -38,6 +38,5 @@ export const SearchLocation = (props) => {
             />
             { isSearching && <span className={cn(styles['SearchLocation__searching-placeholder'])}></span> }
         </div>
-        
     );
 };

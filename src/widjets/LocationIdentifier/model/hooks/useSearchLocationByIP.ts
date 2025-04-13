@@ -5,7 +5,7 @@ export const useSearchLocationByIP = (dispatchers) => {
     const {
         updateLocation, 
         setIsSearching, 
-        clearCurrentWeather
+        clearWeather
     } = dispatchers;
 
     const searchLocationByIP = useCallback(() => {
@@ -15,7 +15,7 @@ export const useSearchLocationByIP = (dispatchers) => {
             getLocationByIP(ip).then((location) => {
                 setIsSearching(false);
                 updateLocation(location);
-                clearCurrentWeather();
+                clearWeather();
             });
         });
     }, []);

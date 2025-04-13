@@ -1,45 +1,18 @@
 import { useMemo } from 'react';
-import { 
-    isClear, 
-    isScatteredClouds, 
-    isNight,
-    toUTCMilliseconds,
-    getNow,
-} from '@/shared';
+import { getCloudsSlug, getTimeOfDay } from '@/shared';
+import { colors } from '../data/colors';
 
-export const useBackgroundColor = (weatherData) => {
+export const useBackgroundColor = (currentWeather) => {
     const backgroundColor = useMemo(() => {
-        if (!weatherData) {
-            return '#23324F';
+        if (!currentWeather) {
+            return colors.default;
         }
 
-        let backgroundColor = '';
+        const cloudsSlug = getCloudsSlug(currentWeather);
+        const timeOfDay = getTimeOfDay(currentWeather);
 
-        const now = toUTCMilliseconds(getNow());
-        const weatherDataWithTime = Object.assign({ now: now }, weatherData);
-
-        if (isClear(weatherData)) {
-            if (isNight(weatherDataWithTime)) {
-                backgroundColor = '#1C2739';
-            } else {
-                backgroundColor = '#23324F';
-            }
-        } else if (isScatteredClouds(weatherData)) {
-            if (isNight(weatherDataWithTime)) {
-                backgroundColor = '#1A212F';
-            } else {
-                backgroundColor = '#1F2D41';
-            }
-        } else {
-            if (isNight(weatherDataWithTime)) {
-                backgroundColor = '#1C232F';
-            } else {
-                backgroundColor = '#222C38';
-            }
-        }
-
-        return backgroundColor;
-    }, [weatherData]);
+        return colors[cloudsSlug][timeOfDay];
+    }, [currentWeather]);
 
     return backgroundColor;
 };
