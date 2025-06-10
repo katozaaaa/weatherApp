@@ -1,4 +1,3 @@
-import cn from 'classnames';
 import styles from './SearchLocationByIP.module.scss';
 
 export const SearchLocationByIP = (props) => {
@@ -9,7 +8,7 @@ export const SearchLocationByIP = (props) => {
 
     return (
         <button 
-            className={cn(styles.SearchLocationByIP)}
+            className={styles.container}
             onClick={searchLocationByIP}
             disabled={isSearching}
         >

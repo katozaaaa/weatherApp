@@ -1,4 +1,3 @@
-import cn from 'classnames';
 import styles from './CurrentWeather.module.scss';
 import { getWindDirection, WeatherIcon } from '@/shared';
 
@@ -6,24 +5,24 @@ export const CurrentWeather = ({ currentWeather }) => {
     const sign = currentWeather.main.temp > 0 ? '+' : '';
         
     return (
-        <div className={cn(styles.CurrentWeather)}>
-            <div className={cn(styles['CurrentWeather__top'])}> 
-                <div className={cn(styles['CurrentWeather__temp'])}> 
+        <div className={styles.container}>
+            <div className={styles.top}>
+                <div className={styles.temp}>
                     { sign + Math.round(currentWeather.main.temp) }° 
                 </div>
-                <div className={cn(styles['CurrentWeather__icon'])}>
-                <WeatherIcon weatherData={currentWeather}/>
+                <div className={styles.icon}>
+                    <WeatherIcon weatherData={currentWeather}/>
                 </div>
-                <div className={cn(styles['CurrentWeather__description-wrapper'])}>
-                    <div className={cn(styles['CurrentWeather__description'])}>
+                <div className={styles.descriptionWrapper}>
+                    <div className={styles.description}>
                         { currentWeather.weather[0].description }
                     </div>
-                    <div className={cn(styles['CurrentWeather__feels-like'])}>
+                    <div className={styles.feelsLike}>
                         Feels like { Math.round(currentWeather.main.feels_like) }°
                     </div>
                 </div>
             </div>
-            <div className={cn(styles['CurrentWeather__bottom'])}>
+            <div className={styles.bottom}>
                 <div>
                     Wind { currentWeather.wind.speed } k/m
                 </div>

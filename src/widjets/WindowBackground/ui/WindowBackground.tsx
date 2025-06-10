@@ -8,7 +8,7 @@ export const WindowBackground = ({ className, currentWeather }) => {
     return (
         <picture 
             className={cn(
-                styles.WindowBackground,
+                styles.container,
                 className
             )}
         >

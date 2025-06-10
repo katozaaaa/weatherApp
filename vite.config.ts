@@ -16,6 +16,12 @@ export default defineConfig(({ command, mode }) => {
         },
         define: {
             __MOCK_IP__: JSON.stringify(mockIp),
+        },
+        css: {
+            modules: {
+                localsConvention: 'camelCase',
+                generateScopedName: '[name]__[local]___[hash:base64:5]',
+            }
         }
     }
 })

@@ -39,7 +39,7 @@ export const LocationIdentifier = (props) => {
     }, []);
 
     return (
-        <div className={cn(styles.LocationIdentifier, className)}>
+        <div className={cn(styles.container, className)}>
             <SearchLocation 
                 locationName={locationName}
                 dispatchLocationName={dispatchLocationName}

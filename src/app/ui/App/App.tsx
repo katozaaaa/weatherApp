@@ -20,42 +20,43 @@ export const App = () => {
 
     return (
         <main 
-            className={cn(styles.App)}
+            className={cn(styles.wrapper)}
             style={{
                 backgroundColor: backgroundColor
             }}
         >
-            <div className={cn(styles['App__window'])}>
-                <div className={cn(styles['App__main'])}>
-                    <div className={cn(styles['App__header'])}>
+            <div className={styles.window}>
+                <div className={styles.main}>
+                    <div className={styles.header}>
                         { weather &&
                             <CurrentTime timezone={weather.current.timezone} />
                         }
                         <LocationIdentifier 
-                            className={cn(styles['App__location-identifier'])}
+                            className={styles.locationIdentifier}
                             dispatchLocationCoords={dispatchLocationCoords}
                             clearWeather={clearWeather}
                         />
                     </div>
-                    <div className={cn(styles['App__body'])}>
+                    <div className={styles.body}>
                         { weather && 
-                            <CurrentWeather currentWeather={weather.current}/>  
+                            <CurrentWeather currentWeather={weather.current} />
                         }
                     </div>
                 </div>
                 { weather &&
-                    <div className={cn(styles['App__footer'])}>
-
-                    </div>
+                    <ForecastWeather
+                        className={styles.forecastWeather}
+                        forecastWeather={weather.forecast}
+                    />
                 }
                 { weather &&
                     <WindowBackground 
-                        className={cn(styles['App__window-background'])}
+                        className={styles.windowBackground}
                         currentWeather={weather.current}
                     />
                 }
                 { !weather &&
-                    <Loader className={cn(styles['App__loader'])}/>
+                    <Loader className={styles.loader} />
                 }
             </div>
         </main>

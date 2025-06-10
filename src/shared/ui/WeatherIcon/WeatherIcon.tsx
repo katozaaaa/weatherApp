@@ -4,6 +4,7 @@ import { getCloudsSlug, getWeatherSlug, getTimeOfDay } from '@/shared';
 
 export const WeatherIcon = (props) => {
     const {
+        className,
         weatherData
     } = props;
 
@@ -27,7 +28,13 @@ export const WeatherIcon = (props) => {
 
     return (
         <>
-            <img src={`./images/${fileNameArray.join('_')}.svg`} ></img>
+            <img
+                className={cn(
+                    styles.container,
+                    className
+                )}
+                src={`./images/${fileNameArray.join('_')}.svg`}
+            />
         </>
     );
 }

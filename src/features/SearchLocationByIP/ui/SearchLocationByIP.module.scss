@@ -1,7 +1,7 @@
 @use 'sass:map';
 @use '@/shared/styles/variables.scss' as v;
 
-.SearchLocationByIP {
+.container {
     display: flex;
     background-color: transparent;
     outline: none;

@@ -25,8 +25,8 @@ export const SearchLocation = (props) => {
     return (
         <div 
             className={cn(
-                styles.SearchLocation,
-                isSearching && styles['SearchLocation--searching']
+                styles.container,
+                isSearching && styles.containerSearching
             )}
         >
             <input 
@@ -36,7 +36,7 @@ export const SearchLocation = (props) => {
                 onKeyUp={onEnter}
                 onInput={onInput}
             />
-            { isSearching && <span className={cn(styles['SearchLocation__searching-placeholder'])}></span> }
+            { isSearching && <span className={styles.searchingPlaceholder}></span> }
         </div>
     );
 };
