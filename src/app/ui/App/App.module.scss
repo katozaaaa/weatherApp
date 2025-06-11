@@ -48,7 +48,6 @@
 
 .forecast-weather {
     max-width: 100%;
-    overflow-x: scroll;
     background-color: map.get(v.$color, 'white', 'transparent', '10');
     backdrop-filter: blur(10px);
 }

@@ -1,5 +1,5 @@
 export const getTimeString = (date) => {
-    return date.toLocaleTimeString('en-EN', { 
+    return date.toLocaleTimeString('ru-RU', {
         hour: '2-digit', 
         minute: '2-digit'
     });

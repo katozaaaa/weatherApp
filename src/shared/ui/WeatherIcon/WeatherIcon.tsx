@@ -5,7 +5,7 @@ import { getCloudsSlug, getWeatherSlug, getTimeOfDay } from '@/shared';
 export const WeatherIcon = (props) => {
     const {
         className,
-        weatherData
+        weatherData,
     } = props;
 
     const cloudsSlug = getCloudsSlug(weatherData);

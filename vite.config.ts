@@ -8,10 +8,12 @@ export default defineConfig(({ command, mode }) => {
     const mockIp = env.VITE_MOCK_IP;
 
     return {
-        plugins: [react()],
+        plugins: [
+            react(),
+        ],
         resolve: {
             alias: {
-            '@': resolve(__dirname, 'src'),
+                '@': resolve(__dirname, 'src'),
             },
         },
         define: {

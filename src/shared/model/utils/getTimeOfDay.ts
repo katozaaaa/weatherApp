@@ -1,11 +1,9 @@
-import { getNow, toUTCMilliseconds } from '@/shared';
+import { toUTCMilliseconds } from '@/shared';
 
 export const getTimeOfDay = (weatherData) => {
-    const now = toUTCMilliseconds(getNow());
-
     if (
-        now < weatherData.sys.sunrise * 1000 || 
-        now >= weatherData.sys.sunset * 1000
+        weatherData.dt * 1000 < weatherData.sys.sunrise * 1000 ||
+        weatherData.dt * 1000 >= weatherData.sys.sunset * 1000
     ) {
         return 'night';
     }
