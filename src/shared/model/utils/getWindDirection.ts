@@ -16,4 +16,4 @@ export const getWindDirection = (deg: number) => {
     } else if (deg >= 292.5 && deg < 337.5) {
         return 'NE';
     }
-}
+};

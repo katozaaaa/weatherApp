@@ -5,7 +5,7 @@ import { getCloudsSlug, getWeatherSlug, getTimeOfDay } from '@/shared';
 export const WeatherIcon = (props) => {
     const {
         className,
-        weatherData,
+        weatherData
     } = props;
 
     const cloudsSlug = getCloudsSlug(weatherData);
@@ -15,26 +15,26 @@ export const WeatherIcon = (props) => {
     let slugs = [];
 
     if (weatherSlug === 'clear') {
-        slugs = ['no-clouds', timeOfDay];
+        slugs = [ 'no-clouds', timeOfDay ];
     } else if (weatherSlug !== 'thunderstorm' && weatherSlug !== 'atmosphere') {
         if (cloudsSlug !== 'overcast-clouds') {
-            slugs = ['scattered-clouds', timeOfDay];
+            slugs = [ 'scattered-clouds', timeOfDay ];
         } else {
-            slugs = [cloudsSlug];
+            slugs = [ cloudsSlug ];
         }
     }
 
-    let fileNameArray = ['weather-icon', weatherSlug, ...slugs];
+    const fileNameArray = [ 'weather-icon', weatherSlug, ...slugs ];
 
     return (
         <>
             <img
-                className={cn(
+                className={ cn(
                     styles.container,
                     className
-                )}
-                src={`./images/${fileNameArray.join('_')}.svg`}
+                ) }
+                src={ `./images/${fileNameArray.join('_')}.svg` }
             />
         </>
     );
-}
+};

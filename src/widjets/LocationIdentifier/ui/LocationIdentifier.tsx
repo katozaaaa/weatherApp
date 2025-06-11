@@ -14,8 +14,8 @@ export const LocationIdentifier = (props) => {
         clearWeather
     } = props;
 
-    const [locationName, dispatchLocationName] = useLocationName();
-    const [isSearching, setIsSearching] = useState(false);
+    const [ locationName, dispatchLocationName ] = useLocationName();
+    const [ isSearching, setIsSearching ] = useState(false);
 
     const updateLocation = useUpdateLocation({
         dispatchLocationName,
@@ -39,16 +39,16 @@ export const LocationIdentifier = (props) => {
     }, []);
 
     return (
-        <div className={cn(styles.container, className)}>
+        <div className={ cn(styles.container, className) }>
             <SearchLocation 
-                locationName={locationName}
-                dispatchLocationName={dispatchLocationName}
-                searchLocationByLocationName={searchLocationByLocationName}
-                isSearching={isSearching}
+                locationName={ locationName }
+                dispatchLocationName={ dispatchLocationName }
+                searchLocationByLocationName={ searchLocationByLocationName }
+                isSearching={ isSearching }
             />
             <SearchLocationByIP 
-                searchLocationByIP={searchLocationByIP}
-                isSearching={isSearching}
+                searchLocationByIP={ searchLocationByIP }
+                isSearching={ isSearching }
             />
         </div>
     );

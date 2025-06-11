@@ -1,6 +1,6 @@
 import cn from 'classnames';
 import styles from './ForecastWeather.module.scss';
-import {getTimeString, toLocaleDate, WeatherIcon} from "@/shared";
+import { getTimeString, toLocaleDate, WeatherIcon } from '@/shared';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Scrollbar, FreeMode } from 'swiper/modules';
 
@@ -10,7 +10,7 @@ import 'swiper/css/scrollbar';
 export const ForecastWeather = (props) => {
     const {
         className,
-        forecastWeather,
+        forecastWeather
     } = props;
 
     const sys = {
@@ -20,34 +20,34 @@ export const ForecastWeather = (props) => {
 
     return (
         <div
-            className={cn(
+            className={ cn(
                 styles.container,
                 className
-            )}
+            ) }
         >
             <Swiper
-                className={styles.slider}
-                modules={[
+                className={ styles.slider }
+                modules={ [
                     Scrollbar,
                     FreeMode
-                ]}
-                freeMode={{
+                ] }
+                freeMode={ {
                     enabled: true,
                     sticky: false,
                     momentumBounceRatio: 0,
                     momentumRatio: 0.5,
-                    momentumVelocityRatio: 0.5,
-                }}
-                slidesPerView={12}
-                grabCursor={true}
-                autoHeight={true}
-                resistanceRatio={0}
-                scrollbar={{
+                    momentumVelocityRatio: 0.5
+                } }
+                slidesPerView={ 12 }
+                grabCursor={ true }
+                autoHeight={ true }
+                resistanceRatio={ 0 }
+                scrollbar={ {
                     hide: false,
                     draggable: true,
-                    dragSize: 200,
-                }}
-                wrapperTag={'ul'}
+                    dragSize: 200
+                } }
+                wrapperTag={ 'ul' }
             >
                 {
                     forecastWeather.list.reduce((acc, weather) => {
@@ -78,17 +78,17 @@ export const ForecastWeather = (props) => {
                     }, []).map((item, index) => {
                         return (
                             <SwiperSlide
-                                className={styles.slide}
-                                key={index}
-                                tag={'li'}
+                                className={ styles.slide }
+                                key={ index }
+                                tag={ 'li' }
                             >
                                 { typeof(item) === 'string' ? (
-                                    <div className={styles.dayBeginning}>
+                                    <div className={ styles.dayBeginning }>
                                         { item }
                                     </div>
                                 ) : (
-                                    <div className={styles.weather}>
-                                        <div className={styles.time}>
+                                    <div className={ styles.weather }>
+                                        <div className={ styles.time }>
                                             {
                                                 getTimeString(
                                                     toLocaleDate(
@@ -98,10 +98,10 @@ export const ForecastWeather = (props) => {
                                                 )
                                             }
                                         </div>
-                                        <div className={styles.weatherIcon}>
-                                            <WeatherIcon weatherData={item} />
+                                        <div className={ styles.weatherIcon }>
+                                            <WeatherIcon weatherData={ item } />
                                         </div>
-                                        <div className={styles.temp}>
+                                        <div className={ styles.temp }>
                                             { (item.main.temp > 0 ? '+' : '') + Math.round(item.main.temp) + '°'}
                                         </div>
                                     </div>

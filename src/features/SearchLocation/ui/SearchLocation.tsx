@@ -24,19 +24,19 @@ export const SearchLocation = (props) => {
 
     return (
         <div 
-            className={cn(
+            className={ cn(
                 styles.container,
                 isSearching && styles.containerSearching
-            )}
+            ) }
         >
             <input 
-                type={'text'}
-                value={locationName}
+                type={ 'text' }
+                value={ locationName }
                 placeholder='Enter a locality'
-                onKeyUp={onEnter}
-                onInput={onInput}
+                onKeyUp={ onEnter }
+                onInput={ onInput }
             />
-            { isSearching && <span className={styles.searchingPlaceholder}></span> }
+            { isSearching && <span className={ styles.searchingPlaceholder }></span> }
         </div>
     );
 };

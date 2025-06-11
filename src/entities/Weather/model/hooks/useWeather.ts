@@ -3,7 +3,7 @@ import { getWeather } from '../../api/getWeather';
 import { weatherReducer } from '../reducers/weatherReducer';
 
 export const useWeather = (locationCoords) => {
-    const [weather, dispatchWeather] = useReducer(
+    const [ weather, dispatchWeather ] = useReducer(
         weatherReducer, 
         { current: null }
     );
@@ -23,7 +23,7 @@ export const useWeather = (locationCoords) => {
                 }
             }  
         });
-    }, [locationCoords]);
+    }, [ locationCoords ]);
 
     useEffect(() => {
         const expire = { current: false };
@@ -35,7 +35,7 @@ export const useWeather = (locationCoords) => {
             expire.current = true;
             clearInterval(intervalID); 
         };
-    }, [locationCoords]);
+    }, [ locationCoords ]);
 
-    return [weather.current, dispatchWeather];
+    return [ weather.current, dispatchWeather ];
 };

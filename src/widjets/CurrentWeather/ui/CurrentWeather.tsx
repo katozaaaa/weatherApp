@@ -3,24 +3,24 @@ import { getWindDirection, WeatherIcon } from '@/shared';
 
 export const CurrentWeather = ({ currentWeather }) => {
     return (
-        <div className={styles.container}>
-            <div className={styles.top}>
-                <div className={styles.temp}>
+        <div className={ styles.container }>
+            <div className={ styles.top }>
+                <div className={ styles.temp }>
                     { (currentWeather.main.temp > 0 ? '+' : '') + Math.round(currentWeather.main.temp) + '°' }
                 </div>
-                <div className={styles.icon}>
-                    <WeatherIcon weatherData={currentWeather}/>
+                <div className={ styles.icon }>
+                    <WeatherIcon weatherData={ currentWeather }/>
                 </div>
-                <div className={styles.descriptionWrapper}>
-                    <div className={styles.description}>
+                <div className={ styles.descriptionWrapper }>
+                    <div className={ styles.description }>
                         { currentWeather.weather[0].description }
                     </div>
-                    <div className={styles.feelsLike}>
+                    <div className={ styles.feelsLike }>
                         Feels like { (currentWeather.main.feels_like > 0 ? '+' : '') + Math.round(currentWeather.main.feels_like) + '°' }
                     </div>
                 </div>
             </div>
-            <div className={styles.bottom}>
+            <div className={ styles.bottom }>
                 <div>
                     Wind { currentWeather.wind.speed } k/m
                 </div>

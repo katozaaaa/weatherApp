@@ -5,8 +5,8 @@ export const getCloudsSlug = (weatherData) => {
     ) {
         return 'no-clouds';
     } else if (weatherData.clouds.all <= 50) {
-        return 'scattered-clouds'
+        return 'scattered-clouds';
     } else {
         return 'overcast-clouds';
     }
-}
+};

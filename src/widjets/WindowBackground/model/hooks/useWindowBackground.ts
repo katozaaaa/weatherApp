@@ -10,7 +10,7 @@ export const useWindowBackground = (currentWeather) => {
                 getTimeOfDay(currentWeather)
             ].join('_')
         };
-    }, [currentWeather]);
+    }, [ currentWeather ]);
 
     return windowBackground;
 };

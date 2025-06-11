@@ -12,7 +12,7 @@ export const useBackgroundColor = (currentWeather) => {
         const timeOfDay = getTimeOfDay(currentWeather);
 
         return colors[cloudsSlug][timeOfDay];
-    }, [currentWeather]);
+    }, [ currentWeather ]);
 
     return backgroundColor;
 };

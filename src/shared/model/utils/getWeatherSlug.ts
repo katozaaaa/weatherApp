@@ -6,7 +6,7 @@ export const getWeatherSlug = (weatherData) => {
     } else if (weatherId > 800) {
         return 'clouds';
     } else if (weatherId >= 700) {
-        return 'atmosphere'
+        return 'atmosphere';
     } else if (weatherId >= 600) {
         return 'snow';
     } else if (weatherId >= 300) {
@@ -14,4 +14,4 @@ export const getWeatherSlug = (weatherData) => {
     } else {
         return 'thunderstorm';
     }
-}
+};
