@@ -16,7 +16,7 @@ export const App = () => {
     const [ locationCoords, dispatchLocationCoords ] = useLocationCoords();
     const [ weather, dispatchWeather ] = useWeather(locationCoords);
     const clearWeather = useClearWeather(dispatchWeather);
-    const backgroundColor = useBackgroundColor(weather ? weather.current : null);
+    const backgroundColor = useBackgroundColor(weather?.current || null);
 
     return (
         <main 
@@ -28,36 +28,41 @@ export const App = () => {
             <div className={ styles.window }>
                 <div className={ styles.main }>
                     <div className={ styles.header }>
-                        { weather &&
+                        {weather && !weather.error && (
                             <CurrentTime timezone={ weather.current.timezone } />
-                        }
-                        <LocationIdentifier 
+                        )}
+                        <LocationIdentifier
                             className={ styles.locationIdentifier }
                             dispatchLocationCoords={ dispatchLocationCoords }
                             clearWeather={ clearWeather }
                         />
                     </div>
                     <div className={ styles.body }>
-                        { weather && 
+                        {weather && !weather.error && (
                             <CurrentWeather currentWeather={ weather.current } />
-                        }
+                        )}
                     </div>
                 </div>
-                { weather &&
-                    <ForecastWeather
-                        className={ styles.forecastWeather }
-                        forecastWeather={ weather.forecast }
-                    />
-                }
-                { weather &&
-                    <WindowBackground 
-                        className={ styles.windowBackground }
-                        currentWeather={ weather.current }
-                    />
-                }
-                { !weather &&
-                    <Loader className={ styles.loader } />
-                }
+                {weather ? (
+                    weather.error ? (
+                        <div className={styles.error}>
+                            {weather.error}
+                        </div>
+                    ) : (
+                        <>
+                            <ForecastWeather
+                                className={styles.forecastWeather}
+                                forecastWeather={weather.forecast}
+                            />
+                            <WindowBackground
+                                className={styles.windowBackground}
+                                currentWeather={weather.current}
+                            />
+                        </>
+                    )
+                ) : (
+                    <Loader className={styles.loader} />
+                )}
             </div>
         </main>
     );

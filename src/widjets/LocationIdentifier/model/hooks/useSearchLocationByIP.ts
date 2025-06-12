@@ -11,14 +11,23 @@ export const useSearchLocationByIP = (dispatchers) => {
     const searchLocationByIP = useCallback(() => {
         setIsSearching(true);
 
-        getIP().then((ip) => {
-            getLocationByIP(ip).then((location) => {
-                setIsSearching(false);
-                updateLocation(location);
-                clearWeather();
+        getIP()
+            .then((ip) => {
+                getLocationByIP(ip)
+                    .then(
+                        (location) => {
+                            updateLocation(location);
+                        },
+                        (error) => {
+                            updateLocation(null);
+                        }
+                    )
+                    .finally(() => {
+                        setIsSearching(false);
+                        clearWeather();
+                    });
             });
-        });
-    }, []);
+    }, [updateLocation, setIsSearching, clearWeather]);
 
     return searchLocationByIP;
 };

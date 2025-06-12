@@ -7,22 +7,32 @@ export const useUpdateLocation = (dispatchers) => {
     } = dispatchers;
 
     const updateLocation = useCallback((location) => {
-        dispatchLocationName({
-            type: 'updated',
-            locationName: [
-                location.placeName, 
-                location.countryName || ''
-            ].join(', ')
-        });
+        if (location) {
+            dispatchLocationName({
+                type: 'updated',
+                locationName: [
+                    location.placeName,
+                    location.countryName || ''
+                ].join(', ')
+            });
 
-        dispatchLocationCoords({
-            type: 'updated',
-            location: {
-                lat: location.lat,
-                lon: location.lon
-            }
-        });
-    }, []);
+            dispatchLocationCoords({
+                type: 'updated',
+                location: {
+                    lat: location.lat,
+                    lon: location.lon
+                }
+            });
+        } else {
+            dispatchLocationName({
+                type: 'cleared'
+            });
+
+            dispatchLocationCoords({
+                type: 'cleared'
+            });
+        }
+    }, [ dispatchLocationName, dispatchLocationCoords ]);
 
     return updateLocation;
 };

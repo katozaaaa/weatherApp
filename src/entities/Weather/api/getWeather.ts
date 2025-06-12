@@ -5,19 +5,13 @@ export const getWeather = (locationCoords) => {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                 const key = `lat=${locationCoords.lat}&lon=${locationCoords.lon}`;
+
                 if (mockData.hasOwnProperty(key)) {
                     resolve(mockData[key]);
                 } else {
-                    reject();
+                    reject(new Error('Failed to get weather'));
                 }
             }, 1000);
-        }).then(
-            (weather) => {
-                return weather;
-            },
-            () => {
-                return null;
-            }
-        );
+        });
     }
 };

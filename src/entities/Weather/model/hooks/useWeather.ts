@@ -9,20 +9,30 @@ export const useWeather = (locationCoords) => {
     );
 
     const updateWeather = useCallback((expire) => {
-        getWeather(locationCoords).then((weather) => {
-            if (!expire.current) {
-                if (weather) {
+        getWeather(locationCoords).then(
+            (weather) => {
+                if (!expire.current) {
+                    if (weather) {
+                        dispatchWeather({
+                            type: 'updated',
+                            weather: weather
+                        });
+                    } else {
+                        dispatchWeather({
+                            type: 'cleared'
+                        });
+                    }
+                }
+            },
+            (error) => {
+                if (!expire.current) {
                     dispatchWeather({
-                        type: 'updated',
-                        weather: weather
-                    });
-                } else {
-                    dispatchWeather({
-                        type: 'cleared'
+                        type: 'error',
+                        error: error.message
                     });
                 }
-            }  
-        });
+            }
+        );
     }, [ locationCoords ]);
 
     useEffect(() => {

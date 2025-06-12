@@ -6,7 +6,11 @@ export const CurrentWeather = ({ currentWeather }) => {
         <div className={ styles.container }>
             <div className={ styles.top }>
                 <div className={ styles.temp }>
-                    { (currentWeather.main.temp > 0 ? '+' : '') + Math.round(currentWeather.main.temp) + '°' }
+                    {
+                        (currentWeather.main.temp > 0 ? '+' : '')
+                        + Math.round(currentWeather.main.temp)
+                        + '°'
+                    }
                 </div>
                 <div className={ styles.icon }>
                     <WeatherIcon weatherData={ currentWeather }/>
@@ -16,7 +20,11 @@ export const CurrentWeather = ({ currentWeather }) => {
                         { currentWeather.weather[0].description }
                     </div>
                     <div className={ styles.feelsLike }>
-                        Feels like { (currentWeather.main.feels_like > 0 ? '+' : '') + Math.round(currentWeather.main.feels_like) + '°' }
+                        Feels like {
+                            (currentWeather.main.feels_like > 0 ? '+' : '')
+                            + Math.round(currentWeather.main.feels_like)
+                            + '°'
+                        }
                     </div>
                 </div>
             </div>

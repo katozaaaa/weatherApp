@@ -6,15 +6,23 @@ export const getLocationByIP = (ip: string) => {
             setTimeout(() => {
                 if (mockData.hasOwnProperty(ip)) {
                     resolve(mockData[ip]);
+                } else {
+                    reject(new Error(`Unable to find location with IP ${ip}`));
                 }
             }, 1000);
-        }).then((location) => {
-            return {
-                placeName: location['city'],
-                countryName: location['country_name'],
-                lat: location['latitude'], 
-                lon: location['longitude']
-            };
-        });
+        }).then(
+            (response) => {
+                if (response.error) {
+                    throw new Error(response.reason);
+                }
+
+                return {
+                    placeName: response['city'],
+                    countryName: response['country_name'],
+                    lat: response['latitude'],
+                    lon: response['longitude']
+                };
+            }
+        );
     }
 };

@@ -12,7 +12,10 @@ export const WindowBackground = ({ className, currentWeather }) => {
                 className
             ) }
         >
-            <source srcSet={ `./images/${windowBackground.fileName}.jpg, ./images/${windowBackground.fileName}@2x.jpg 2x` } type={ 'image/jpg' } />
+            <source
+                srcSet={ `./images/${windowBackground.fileName}.jpg, ./images/${windowBackground.fileName}@2x.jpg 2x` }
+                type={ 'image/jpg' }
+            />
             <img src={ `./images/${windowBackground.fileName}.jpg` } />
         </picture>
     );

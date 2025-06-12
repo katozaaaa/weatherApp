@@ -50,13 +50,13 @@ export const ForecastWeather = (props) => {
                 wrapperTag={ 'ul' }
             >
                 {
-                    forecastWeather.list.reduce((acc, weather) => {
+                    forecastWeather.list.reduce((acc, weather, index) => {
                         const localeDate = toLocaleDate(
                             new Date(weather.dt * 1000),
                             forecastWeather.city.timezone
                         );
 
-                        if (localeDate.getHours() < 3) {
+                        if (localeDate.getHours() < 3 && index !== 0) {
                             acc.push(
                                 localeDate
                                     .toLocaleTimeString('en-EN', { weekday: 'long' })
@@ -102,7 +102,11 @@ export const ForecastWeather = (props) => {
                                             <WeatherIcon weatherData={ item } />
                                         </div>
                                         <div className={ styles.temp }>
-                                            { (item.main.temp > 0 ? '+' : '') + Math.round(item.main.temp) + '°'}
+                                            {
+                                                (item.main.temp > 0 ? '+' : '')
+                                                + Math.round(item.main.temp)
+                                                + '°'
+                                            }
                                         </div>
                                     </div>
                                 )}
