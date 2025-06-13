@@ -9,7 +9,7 @@ export const getWeather = (locationCoords) => {
                 if (mockData.hasOwnProperty(key)) {
                     resolve(mockData[key]);
                 } else {
-                    reject(new Error('Failed to get weather'));
+                    reject(new Error('Failed to fetch weather data'));
                 }
             }, 1000);
         });

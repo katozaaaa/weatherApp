@@ -64,3 +64,15 @@
     z-index: -1;
     inset: 0;
 }
+
+.error {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 600px;
+    font-size: 36px;
+    font-weight: 700;
+    color: map.get(v.$color, 'white', 'transparent', '30');
+    text-align: center;
+}

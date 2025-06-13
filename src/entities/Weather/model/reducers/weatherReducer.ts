@@ -13,13 +13,6 @@ export const weatherReducer = produce((draft, action) => {
             draft.current = null;
             break;
         }
-        case 'error': {
-            draft.current = {
-                error: action.error
-            };
-
-            break;
-        }
         default: {
             break;
         }

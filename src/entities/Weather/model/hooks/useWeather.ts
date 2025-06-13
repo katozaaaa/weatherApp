@@ -2,38 +2,44 @@ import { useReducer, useEffect, useCallback } from 'react';
 import { getWeather } from '../../api/getWeather';
 import { weatherReducer } from '../reducers/weatherReducer';
 
-export const useWeather = (locationCoords) => {
+export const useWeather = (locationCoords, setError) => {
     const [ weather, dispatchWeather ] = useReducer(
         weatherReducer, 
         { current: null }
     );
 
     const updateWeather = useCallback((expire) => {
-        getWeather(locationCoords).then(
-            (weather) => {
-                if (!expire.current) {
-                    if (weather) {
-                        dispatchWeather({
-                            type: 'updated',
-                            weather: weather
-                        });
-                    } else {
+        if (!locationCoords.lat && !locationCoords.lon) {
+            return;
+        }
+
+        getWeather(locationCoords)
+            .then(
+                (weather) => {
+                    if (!expire.current) {
+                        if (weather) {
+                            dispatchWeather({
+                                type: 'updated',
+                                weather: weather
+                            });
+                        } else {
+                            dispatchWeather({
+                                type: 'cleared'
+                            });
+                        }
+                    }
+                },
+                (error) => {
+                    if (!expire.current) {
                         dispatchWeather({
                             type: 'cleared'
                         });
+
+                        setError(error);
                     }
                 }
-            },
-            (error) => {
-                if (!expire.current) {
-                    dispatchWeather({
-                        type: 'error',
-                        error: error.message
-                    });
-                }
-            }
-        );
-    }, [ locationCoords ]);
+            );
+    }, [ locationCoords, setError ]);
 
     useEffect(() => {
         const expire = { current: false };
@@ -45,7 +51,7 @@ export const useWeather = (locationCoords) => {
             expire.current = true;
             clearInterval(intervalID); 
         };
-    }, [ locationCoords ]);
+    }, [ locationCoords, updateWeather ]);
 
     return [ weather.current, dispatchWeather ];
 };

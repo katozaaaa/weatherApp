@@ -1,11 +1,9 @@
 import { useCallback } from 'react';
 
 export const useClearWeather = (dispatchWeather) => {
-    const clearWeather = useCallback(() => {
+    return useCallback(() => {
         dispatchWeather({
             type: 'cleared'
         });
     }, []);
-
-    return clearWeather;
 };

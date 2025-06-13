@@ -1,13 +1,13 @@
 import { mockData } from '../model/data/mockData';
 
-export const getLocationByIP = (ip: string) => {
+export const getLocationByIP = () => {
     if (import.meta.env.MODE === 'development') {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-                if (mockData.hasOwnProperty(ip)) {
-                    resolve(mockData[ip]);
+                if (mockData.hasOwnProperty(__MOCK_IP__)) {
+                    resolve(mockData[__MOCK_IP__]);
                 } else {
-                    reject(new Error(`Unable to find location with IP ${ip}`));
+                    reject(new Error(`Unable to find location with IP ${__MOCK_IP__}`));
                 }
             }, 1000);
         }).then(

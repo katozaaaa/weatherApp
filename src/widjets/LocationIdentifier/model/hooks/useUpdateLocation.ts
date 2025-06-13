@@ -6,7 +6,7 @@ export const useUpdateLocation = (dispatchers) => {
         dispatchLocationCoords
     } = dispatchers;
 
-    const updateLocation = useCallback((location) => {
+    return useCallback((location) => {
         if (location) {
             dispatchLocationName({
                 type: 'updated',
@@ -33,6 +33,4 @@ export const useUpdateLocation = (dispatchers) => {
             });
         }
     }, [ dispatchLocationName, dispatchLocationCoords ]);
-
-    return updateLocation;
 };

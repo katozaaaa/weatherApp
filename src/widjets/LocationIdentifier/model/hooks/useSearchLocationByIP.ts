@@ -1,33 +1,31 @@
 import { useCallback } from 'react';
-import { getIP, getLocationByIP } from '@/features/SearchLocationByIP';
+import { getLocationByIP } from '@/features/SearchLocationByIP';
 
 export const useSearchLocationByIP = (dispatchers) => {
     const {
         updateLocation, 
         setIsSearching, 
-        clearWeather
+        clearWeather,
+        setError
     } = dispatchers;
 
-    const searchLocationByIP = useCallback(() => {
+    return useCallback(() => {
         setIsSearching(true);
 
-        getIP()
-            .then((ip) => {
-                getLocationByIP(ip)
-                    .then(
-                        (location) => {
-                            updateLocation(location);
-                        },
-                        (error) => {
-                            updateLocation(null);
-                        }
-                    )
-                    .finally(() => {
-                        setIsSearching(false);
-                        clearWeather();
-                    });
+        getLocationByIP()
+            .then(
+                (location) => {
+                    setError(null);
+                    updateLocation(location);
+                },
+                (error) => {
+                    setError(error);
+                    updateLocation(null);
+                }
+            )
+            .finally(() => {
+                setIsSearching(false);
+                clearWeather();
             });
-    }, [updateLocation, setIsSearching, clearWeather]);
-
-    return searchLocationByIP;
+    }, [ updateLocation, setIsSearching, clearWeather, setError ]);
 };

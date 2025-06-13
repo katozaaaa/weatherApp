@@ -3,7 +3,7 @@ import { getCloudsSlug, getTimeOfDay } from '@/shared';
 import { colors } from '../data/colors';
 
 export const useBackgroundColor = (currentWeather) => {
-    const backgroundColor = useMemo(() => {
+    return useMemo(() => {
         if (!currentWeather) {
             return colors.default;
         }
@@ -13,6 +13,4 @@ export const useBackgroundColor = (currentWeather) => {
 
         return colors[cloudsSlug][timeOfDay];
     }, [ currentWeather ]);
-
-    return backgroundColor;
 };

@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { getCloudsSlug, getTimeOfDay } from '@/shared';
 
 export const useWindowBackground = (currentWeather) => {
-    const windowBackground = useMemo(() => {
+    return useMemo(() => {
         return {
             fileName: [
                 'window-background',
@@ -11,6 +11,4 @@ export const useWindowBackground = (currentWeather) => {
             ].join('_')
         };
     }, [ currentWeather ]);
-
-    return windowBackground;
 };

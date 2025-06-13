@@ -5,18 +5,22 @@ export const useSearchLocationByLocationName = (dispatchers) => {
     const {
         updateLocation,
         dispatchLocationCoords,
-        clearWeather
+        clearWeather,
+        setError
     } = dispatchers;
 
-    const searchLocationByLocationName = useCallback((locationName) => {
+    return useCallback((locationName) => {
+        setError(null);
         clearWeather();
 
         dispatchLocationCoords({
             type: 'cleared'
         });
 
-        getLocationByLocationName(locationName).then(updateLocation);
+        getLocationByLocationName(locationName)
+            .then(
+                updateLocation,
+                setError
+            );
     }, []);
-
-    return searchLocationByLocationName;
 };

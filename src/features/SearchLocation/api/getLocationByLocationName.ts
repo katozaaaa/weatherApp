@@ -7,16 +7,22 @@ export const getLocationByLocationName = (locationName: string) => {
                 const key = Object.keys(mockData).find((key) => {
                     return key.toLowerCase().includes(locationName.toLocaleLowerCase());
                 });
-                
-                resolve(mockData[key]['geonames'][0]);
+
+                if (key) {
+                    resolve(mockData[key]['geonames'][0]);
+                } else {
+                    reject(new Error(`Unknown location ${locationName}`));
+                }
             }, 1000);
-        }).then((location) => {
-            return {
-                placeName: location.name,
-                countryName: location?.countryName,
-                lat: location.lat,
-                lon: location.lng
-            };
-        });
+        }).then(
+            (location) => {
+                return {
+                    placeName: location.name,
+                    countryName: location?.countryName,
+                    lat: location.lat,
+                    lon: location.lng
+                };
+            }
+        );
     }
 };
