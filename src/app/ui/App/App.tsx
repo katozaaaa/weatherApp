@@ -21,7 +21,7 @@ export const App = () => {
     const backgroundColor = useBackgroundColor(weather?.current || null);
 
     return (
-        <main 
+        <main
             className={ cn(styles.wrapper) }
             style={ {
                 backgroundColor: backgroundColor
@@ -40,15 +40,18 @@ export const App = () => {
                             setError={ setError }
                         />
                     </div>
-                    <div className={ styles.body }>
-                        {weather && !error && (
+                    {weather && !error && (
+                        <div className={ styles.body }>
                             <CurrentWeather currentWeather={ weather.current } />
-                        )}
-                    </div>
+                        </div>
+                    )}
                 </div>
                 {error ? (
-                    <div className={ styles.error }>
-                        {error.message}
+                    <div className={ styles.notifications }>
+                        <div className={ styles.error }>
+                            <span> An error has occurred </span>
+                            <span> Reason: { error.message } </span>
+                        </div>
                     </div>
                 ) : (
                     weather ? (
@@ -63,7 +66,9 @@ export const App = () => {
                             />
                         </>
                     ) : (
-                        <Loader className={ styles.loader } />
+                        <div className={ styles.notifications }>
+                            <Loader className={ styles.loader } />
+                        </div>
                     )
                 )}
             </div>

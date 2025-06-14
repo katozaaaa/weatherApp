@@ -11,7 +11,7 @@ export const getLocationByLocationName = (locationName: string) => {
                 if (key) {
                     resolve(mockData[key]['geonames'][0]);
                 } else {
-                    reject(new Error(`Unknown location ${locationName}`));
+                    reject(new Error(`Unknown location`));
                 }
             }, 1000);
         }).then(
