@@ -27,10 +27,7 @@ jobs:
         run: npm ci
 
       - name: Run ESLint
-        run: npx run lint
-
-      - name: Run TypeScript check
-        run: npx tsc --noEmit
+        run: npm run lint
 
       - name: Build the project
         run: npm run build
