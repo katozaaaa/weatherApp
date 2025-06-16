@@ -28,7 +28,7 @@ export default tseslint.config(
             'indent': ['warn', 4, {"SwitchCase": 1}],
             "quotes": ['warn', "single", {"avoidEscape": true}],
             "comma-dangle": ['warn', 'never'],
-            'semi': ['error', 'always'],
+            'semi': ['warn', 'always'],
             'object-curly-spacing': ['warn', 'always'],
             'array-bracket-spacing': ['warn', 'always'],
             'react/jsx-curly-spacing': ['warn', 'always'],
