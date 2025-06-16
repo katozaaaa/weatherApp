@@ -1,4 +1,4 @@
-export const getWeatherSlug = (weatherData) => {
+export const getWeatherSlug = (weatherData: { [index: string]: any }) => {
     const weatherId = weatherData.weather[0].id;
 
     if (weatherId === 800) {

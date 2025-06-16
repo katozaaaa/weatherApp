@@ -1,7 +1,15 @@
-import { useCallback } from 'react';
+import { useCallback, Dispatch, SetStateAction } from 'react';
 import { getLocationByIP } from '@/features/SearchLocationByIP';
+import { LocationData } from '@/features/SearchLocation';
 
-export const useSearchLocationByIP = (dispatchers) => {
+interface Dispatchers {
+    updateLocation: (location: LocationData | null) => void,
+    setIsSearching:  Dispatch<SetStateAction<boolean>>,
+    clearWeather: () => void,
+    setError: (error: Error | null) => void,
+}
+
+export const useSearchLocationByIP = (dispatchers: Dispatchers) => {
     const {
         updateLocation, 
         setIsSearching, 

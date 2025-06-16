@@ -1,14 +1,13 @@
-import { useReducer, useEffect, useCallback } from 'react';
-import { getWeather } from '../../api/getWeather';
+import { useReducer, useEffect, useCallback, Dispatch, SetStateAction } from 'react';
+import { getWeather, LocationCoords } from '../../api/getWeather';
 import { weatherReducer } from '../reducers/weatherReducer';
 
-export const useWeather = (locationCoords, setError) => {
-    const [ weather, dispatchWeather ] = useReducer(
-        weatherReducer, 
-        { current: null }
-    );
+type SetError = Dispatch<SetStateAction<Error | null>>;
 
-    const updateWeather = useCallback((expire) => {
+export const useWeather = (locationCoords: LocationCoords, setError: SetError) => {
+    const [ weather, dispatchWeather ] = useReducer(weatherReducer, { current: null });
+
+    const updateWeather = useCallback((expire: { current: boolean }) => {
         if (!locationCoords.lat && !locationCoords.lon) {
             return;
         }
@@ -53,5 +52,8 @@ export const useWeather = (locationCoords, setError) => {
         };
     }, [ locationCoords, updateWeather ]);
 
-    return [ weather.current, dispatchWeather ];
+    return {
+        weather: weather.current,
+        dispatchWeather
+    };
 };

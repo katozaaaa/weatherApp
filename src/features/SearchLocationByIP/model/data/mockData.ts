@@ -1,4 +1,4 @@
-export const mockData = {
+export const mockData: { [index: string ]: any } = {
     '178.66.157.174': {
         'ip': '178.66.157.174',
         'network': '178.66.128.0/19',

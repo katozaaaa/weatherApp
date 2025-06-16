@@ -1,7 +1,11 @@
 import { useState, useEffect, useCallback } from 'react';
 import { toLocaleDate, getTimeString, getNow } from '@/shared';
 
-export const CurrentTime = ({ timezone }) => {
+interface CurrentTimeProps {
+    timezone: number,
+}
+
+export const CurrentTime = ({ timezone }: CurrentTimeProps) => {
     const [ currentTime, setCurrentTime ] = useState('');
 
     const updateTime = useCallback(() => {

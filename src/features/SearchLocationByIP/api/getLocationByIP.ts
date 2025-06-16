@@ -1,10 +1,17 @@
 import { mockData } from '../model/data/mockData';
+import { LocationData } from '@/features/SearchLocation';
 
-export const getLocationByIP = () => {
+export interface LocationByIPData {
+    [index: string]: any
+}
+
+export type GetLocationByIP = () => Promise<LocationData>;
+
+export const getLocationByIP: GetLocationByIP = () => {
     if (import.meta.env.MODE === 'development') {
-        return new Promise((resolve, reject) => {
+        return new Promise<LocationByIPData>((resolve, reject) => {
             setTimeout(() => {
-                if (mockData.hasOwnProperty(__MOCK_IP__)) {
+                if (Object.prototype.hasOwnProperty.call(mockData, __MOCK_IP__)) {
                     resolve(mockData[__MOCK_IP__]);
                 } else {
                     reject(new Error(`Unable to find location with IP ${__MOCK_IP__}`));
@@ -17,11 +24,22 @@ export const getLocationByIP = () => {
                 }
 
                 return {
-                    placeName: response['city'],
-                    countryName: response['country_name'],
-                    lat: response['latitude'],
-                    lon: response['longitude']
+                    placeName: String(response['city']),
+                    countryName: String(response['country_name']),
+                    lat: Number(response['latitude']),
+                    lon: Number(response['longitude'])
                 };
+            }
+        );
+    } else {
+        return new Promise(
+            (resolve) => {
+                resolve({
+                    placeName: '',
+                    countryName: '',
+                    lat: 0,
+                    lon: 0
+                });
             }
         );
     }

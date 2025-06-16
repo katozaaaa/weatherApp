@@ -1,14 +1,19 @@
 import styles from './CurrentWeather.module.scss';
 import { getWindDirection, WeatherIcon } from '@/shared';
+import { CurrentWeatherData } from '@/entities/Weather';
 
-export const CurrentWeather = ({ currentWeather }) => {
+interface CurrentWeatherProps {
+    currentWeather: CurrentWeatherData
+}
+
+export const CurrentWeather = ({ currentWeather }: CurrentWeatherProps) => {
     return (
         <div className={ styles.container }>
             <div className={ styles.top }>
                 <div className={ styles.temp }>
                     {
-                        (currentWeather.main.temp > 0 ? '+' : '')
-                        + Math.round(currentWeather.main.temp)
+                        (currentWeather.main?.temp > 0 ? '+' : '')
+                        + Math.round(currentWeather.main?.temp)
                         + '°'
                     }
                 </div>
@@ -21,8 +26,8 @@ export const CurrentWeather = ({ currentWeather }) => {
                     </div>
                     <div className={ styles.feelsLike }>
                         Feels like {
-                            (currentWeather.main.feels_like > 0 ? '+' : '')
-                            + Math.round(currentWeather.main.feels_like)
+                            (currentWeather.main?.feels_like > 0 ? '+' : '')
+                            + Math.round(currentWeather.main?.feels_like)
                             + '°'
                         }
                     </div>
@@ -30,16 +35,16 @@ export const CurrentWeather = ({ currentWeather }) => {
             </div>
             <div className={ styles.bottom }>
                 <div>
-                    Wind { currentWeather.wind.speed } k/m
+                    Wind { currentWeather.wind?.speed } k/m
                 </div>
                 <div>
-                    Direction { getWindDirection(currentWeather.wind.deg) }
+                    Direction { getWindDirection(currentWeather.wind?.deg) }
                 </div>
                 <div>
-                    Humidity { currentWeather.main.humidity }%
+                    Humidity { currentWeather.main?.humidity }%
                 </div>
                 <div>
-                    { currentWeather.main.pressure } mmHg
+                    { currentWeather.main?.pressure } mmHg
                 </div>
             </div>
         </div>

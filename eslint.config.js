@@ -32,6 +32,7 @@ export default tseslint.config(
             'object-curly-spacing': ['warn', 'always'],
             'array-bracket-spacing': ['warn', 'always'],
             'react/jsx-curly-spacing': ['warn', 'always'],
+            "@typescript-eslint/no-explicit-any": "off"
         },
     },
 )

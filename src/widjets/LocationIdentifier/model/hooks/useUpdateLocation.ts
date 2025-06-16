@@ -1,12 +1,19 @@
-import { useCallback } from 'react';
+import { useCallback, Dispatch } from 'react';
+import { LocationData, LocationNameAction } from '@/features/SearchLocation';
+import { LocationCoordsAction } from '../reducers/locationCoordsReducer.ts';
 
-export const useUpdateLocation = (dispatchers) => {
+interface Dispatchers {
+    dispatchLocationName: Dispatch<LocationNameAction>
+    dispatchLocationCoords: Dispatch<LocationCoordsAction>
+}
+
+export const useUpdateLocation = (dispatchers: Dispatchers) => {
     const {
         dispatchLocationName,
         dispatchLocationCoords
     } = dispatchers;
 
-    return useCallback((location) => {
+    return useCallback((location: LocationData | null) => {
         if (location) {
             dispatchLocationName({
                 type: 'updated',

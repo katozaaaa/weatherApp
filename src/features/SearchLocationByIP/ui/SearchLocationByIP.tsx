@@ -1,6 +1,11 @@
 import styles from './SearchLocationByIP.module.scss';
 
-export const SearchLocationByIP = (props) => {
+interface SearchLocationByIPProps {
+    searchLocationByIP: () => void,
+    isSearching: boolean,
+}
+
+export const SearchLocationByIP = (props: SearchLocationByIPProps) => {
     const {
         searchLocationByIP,
         isSearching

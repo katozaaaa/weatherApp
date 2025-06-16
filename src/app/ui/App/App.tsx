@@ -16,7 +16,7 @@ import '@/shared/styles/index.scss';
 export const App = () => {
     const [ error, setError ] = useState<Error | null>(null);
     const [ locationCoords, dispatchLocationCoords ] = useLocationCoords();
-    const [ weather, dispatchWeather ] = useWeather(locationCoords, setError);
+    const { weather, dispatchWeather } = useWeather(locationCoords, setError);
     const clearWeather = useClearWeather(dispatchWeather);
     const backgroundColor = useBackgroundColor(weather?.current || null);
 
@@ -31,7 +31,7 @@ export const App = () => {
                 <div className={ styles.main }>
                     <div className={ styles.header }>
                         {weather && !error && (
-                            <CurrentTime timezone={ weather.current.timezone } />
+                            <CurrentTime timezone={ weather.current?.timezone } />
                         )}
                         <LocationIdentifier
                             className={ styles.locationIdentifier }
@@ -40,7 +40,7 @@ export const App = () => {
                             setError={ setError }
                         />
                     </div>
-                    {weather && !error && (
+                    {weather?.current && !error && (
                         <div className={ styles.body }>
                             <CurrentWeather currentWeather={ weather.current } />
                         </div>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Dispatch } from 'react';
 import cn from 'classnames';
 import styles from './LocationIdentifier.module.scss';
 import { SearchLocationByIP } from '@/features/SearchLocationByIP';
@@ -6,8 +6,16 @@ import { SearchLocation, useLocationName } from '@/features/SearchLocation';
 import { useUpdateLocation } from '../model/hooks/useUpdateLocation';
 import { useSearchLocationByIP } from '../model/hooks/useSearchLocationByIP';
 import { useSearchLocationByLocationName } from '../model/hooks/useSearchLocationByLocationName';
+import { LocationCoordsAction } from '../model/reducers/locationCoordsReducer';
 
-export const LocationIdentifier = (props) => {
+interface LocationIdentifierProps {
+    className?: string,
+    dispatchLocationCoords: Dispatch<LocationCoordsAction>,
+    clearWeather: () => void,
+    setError: (error: Error | null) => void,
+}
+
+export const LocationIdentifier = (props: LocationIdentifierProps) => {
     const {
         className,
         dispatchLocationCoords,

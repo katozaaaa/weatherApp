@@ -1,8 +1,14 @@
 import cn from 'classnames';
 import styles from './WeatherIcon.module.scss';
 import { getCloudsSlug, getWeatherSlug, getTimeOfDay } from '@/shared';
+import { CurrentWeatherData } from '@/entities/Weather';
 
-export const WeatherIcon = (props) => {
+interface WeatherIconProps {
+    className?: string;
+    weatherData: CurrentWeatherData
+}
+
+export const WeatherIcon = (props: WeatherIconProps) => {
     const {
         className,
         weatherData
@@ -12,7 +18,7 @@ export const WeatherIcon = (props) => {
     const weatherSlug = getWeatherSlug(weatherData);
     const timeOfDay = getTimeOfDay(weatherData);
 
-    let slugs = [];
+    let slugs: string[] = [];
 
     if (weatherSlug === 'clear') {
         slugs = [ 'no-clouds', timeOfDay ];

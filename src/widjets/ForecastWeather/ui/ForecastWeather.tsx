@@ -1,21 +1,27 @@
 import cn from 'classnames';
 import styles from './ForecastWeather.module.scss';
 import { getTimeString, toLocaleDate, WeatherIcon } from '@/shared';
+import { ForecastWeatherData } from '@/entities/Weather';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Scrollbar, FreeMode } from 'swiper/modules';
 
 import 'swiper/css';
 import 'swiper/css/scrollbar';
 
-export const ForecastWeather = (props) => {
+interface ForecastWeatherProps {
+    className?: string;
+    forecastWeather: ForecastWeatherData
+}
+
+export const ForecastWeather = (props: ForecastWeatherProps) => {
     const {
         className,
         forecastWeather
     } = props;
 
     const sys = {
-        sunrise: forecastWeather.city.sunrise,
-        sunset: forecastWeather.city.sunset
+        sunrise: forecastWeather.city?.sunrise,
+        sunset: forecastWeather.city?.sunset
     };
 
     return (
@@ -50,7 +56,7 @@ export const ForecastWeather = (props) => {
                 wrapperTag={ 'ul' }
             >
                 {
-                    forecastWeather.list.reduce((acc, weather, index) => {
+                    forecastWeather.list.reduce((acc: any, weather: any, index: number) => {
                         const localeDate = toLocaleDate(
                             new Date(weather.dt * 1000),
                             forecastWeather.city.timezone
@@ -75,7 +81,7 @@ export const ForecastWeather = (props) => {
                         });
 
                         return acc;
-                    }, []).map((item, index) => {
+                    }, []).map((item: any, index: number) => {
                         return (
                             <SwiperSlide
                                 className={ styles.slide }

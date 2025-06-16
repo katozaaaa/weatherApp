@@ -1,7 +1,8 @@
 import { useMemo } from 'react';
 import { getCloudsSlug, getTimeOfDay } from '@/shared';
+import { CurrentWeatherData } from '@/entities/Weather';
 
-export const useWindowBackground = (currentWeather) => {
+export const useWindowBackground = (currentWeather: CurrentWeatherData) => {
     return useMemo(() => {
         return {
             fileName: [

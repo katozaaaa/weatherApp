@@ -1,4 +1,4 @@
-export const mockData = {
+export const mockData: { [index: string]: any } = {
     'Seattle, United States': {
         'totalResultsCount': 11477,
         'geonames': [

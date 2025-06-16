@@ -1,7 +1,11 @@
 import cn from 'classnames';
 import styles from './Loader.module.scss';
 
-export const Loader = ({ className }) => {
+interface LoaderProps {
+    className?: string;
+}
+
+export const Loader = ({ className }: LoaderProps) => {
     return (
         <div className={ cn(styles.loader, className) }>
             <svg width="187" height="187" viewBox="0 0 187 187" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -1,4 +1,4 @@
-export const getCloudsSlug = (weatherData) => {
+export const getCloudsSlug = (weatherData: { [index: string]: any }) => {
     if (
         weatherData.weather[0].id === 800 &&
         weatherData.clouds.all <= 25

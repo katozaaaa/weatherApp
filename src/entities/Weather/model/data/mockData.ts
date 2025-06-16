@@ -1,4 +1,4 @@
-export const mockData = {
+export const mockData: { [index: string]: any } = {
     // Seattle, United States
     'lat=47.60621&lon=-122.33207': {
         current: {
