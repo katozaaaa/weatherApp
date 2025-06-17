@@ -1,4 +1,4 @@
-import { client } from '@/shared/api/client.ts';
+import { client } from '@/shared';
 
 export interface CurrentWeatherData {
     [index: string]: any

@@ -7,6 +7,7 @@ interface Dispatchers {
     setIsSearching:  Dispatch<SetStateAction<boolean>>,
     clearWeather: () => void,
     setError: (error: Error | null) => void,
+    IP: string | null
 }
 
 export const useSearchLocationByIP = (dispatchers: Dispatchers) => {
@@ -14,13 +15,18 @@ export const useSearchLocationByIP = (dispatchers: Dispatchers) => {
         updateLocation, 
         setIsSearching, 
         clearWeather,
-        setError
+        setError,
+        IP
     } = dispatchers;
 
     return useCallback(() => {
+        if (!IP) {
+            return;
+        }
+
         setIsSearching(true);
 
-        getLocationByIP()
+        getLocationByIP(IP)
             .then(
                 (location) => {
                     setError(null);
@@ -35,5 +41,11 @@ export const useSearchLocationByIP = (dispatchers: Dispatchers) => {
                 setIsSearching(false);
                 clearWeather();
             });
-    }, [ updateLocation, setIsSearching, clearWeather, setError ]);
+    }, [
+        updateLocation,
+        setIsSearching,
+        clearWeather,
+        setError,
+        IP
+    ]);
 };

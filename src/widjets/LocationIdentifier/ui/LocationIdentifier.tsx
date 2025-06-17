@@ -13,6 +13,7 @@ interface LocationIdentifierProps {
     dispatchLocationCoords: Dispatch<LocationCoordsAction>,
     clearWeather: () => void,
     setError: (error: Error | null) => void,
+    IP: string | null
 }
 
 export const LocationIdentifier = (props: LocationIdentifierProps) => {
@@ -20,7 +21,8 @@ export const LocationIdentifier = (props: LocationIdentifierProps) => {
         className,
         dispatchLocationCoords,
         clearWeather,
-        setError
+        setError,
+        IP
     } = props;
 
     const [ locationName, dispatchLocationName ] = useLocationName();
@@ -35,7 +37,8 @@ export const LocationIdentifier = (props: LocationIdentifierProps) => {
         updateLocation,
         setIsSearching,
         clearWeather,
-        setError
+        setError,
+        IP
     });
 
     const searchLocationByLocationName = useSearchLocationByLocationName({
@@ -57,10 +60,13 @@ export const LocationIdentifier = (props: LocationIdentifierProps) => {
                 searchLocationByLocationName={ searchLocationByLocationName }
                 isSearching={ isSearching }
             />
-            <SearchLocationByIP 
-                searchLocationByIP={ searchLocationByIP }
-                isSearching={ isSearching }
-            />
+            { IP && (
+                <SearchLocationByIP
+                    searchLocationByIP={ searchLocationByIP }
+                    isSearching={ isSearching }
+                />
+            )}
+
         </div>
     );
 };

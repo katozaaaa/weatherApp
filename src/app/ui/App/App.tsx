@@ -8,6 +8,7 @@ import { ForecastWeather } from '@/widjets/ForecastWeather';
 import { WindowBackground } from '@/widjets/WindowBackground/';
 import { useLocationCoords } from '@/widjets/LocationIdentifier';
 import { Loader } from '@/widjets/Loader';
+import { useIP } from '../../model/hooks/useIP';
 import { useBackgroundColor } from '../../model/hooks/useBackgroundColor';
 import { useState } from 'react';
 
@@ -15,6 +16,7 @@ import '@/shared/styles/index.scss';
 
 export const App = () => {
     const [ error, setError ] = useState<Error | null>(null);
+    const IP = useIP();
     const [ locationCoords, dispatchLocationCoords ] = useLocationCoords();
     const { weather, dispatchWeather } = useWeather(locationCoords, setError);
     const clearWeather = useClearWeather(dispatchWeather);
@@ -38,6 +40,7 @@ export const App = () => {
                             dispatchLocationCoords={ dispatchLocationCoords }
                             clearWeather={ clearWeather }
                             setError={ setError }
+                            IP={ IP }
                         />
                     </div>
                     {weather?.current && !error && (
