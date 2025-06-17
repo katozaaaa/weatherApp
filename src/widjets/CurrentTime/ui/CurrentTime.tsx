@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { toLocaleDate, getTimeString, getNow } from '@/shared';
+import { toLocaleDate, getTimeString } from '@/shared';
 
 interface CurrentTimeProps {
     timezone: number,
@@ -12,7 +12,7 @@ export const CurrentTime = ({ timezone }: CurrentTimeProps) => {
         setCurrentTime(
             getTimeString(
                 toLocaleDate(
-                    getNow(), 
+                    new Date(),
                     timezone
                 )
             )
@@ -24,7 +24,7 @@ export const CurrentTime = ({ timezone }: CurrentTimeProps) => {
         const timerID = setInterval(updateTime, 1000);
 
         return () => { clearInterval(timerID); };
-    }, [ timezone ]);
+    }, [ timezone, updateTime ]);
 
     return (
         <div>

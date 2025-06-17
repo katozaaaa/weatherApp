@@ -1,4 +1,4 @@
-import { mockData } from '../model/data/mockData';
+import { client } from '@/shared/api/client.ts';
 
 export interface CurrentWeatherData {
     [index: string]: any
@@ -18,26 +18,19 @@ export interface LocationCoords {
 
 type GetWeather = (locationCoords: LocationCoords) => Promise<WeatherData>;
 
-export const getWeather: GetWeather = (locationCoords) => {
-    if (import.meta.env.MODE === 'development') {
-        return new Promise(
-            (resolve, reject) => {
-                setTimeout(() => {
-                    const key = `lat=${locationCoords.lat}&lon=${locationCoords.lon}`;
-
-                    if (Object.prototype.hasOwnProperty.call(mockData, key)) {
-                        resolve(mockData[key]);
-                    } else {
-                        reject(new Error('Failed to fetch weather data'));
-                    }
-                }, 1000);
+export const getWeather: GetWeather = async (locationCoords) => {
+    return client.get(
+        'weather',
+        {
+            params: {
+                ...locationCoords
             }
-        );
-    } else {
-        return new Promise(
-            (resolve) => {
-                resolve({} as WeatherData);
+        }
+    ).then(
+        (result) => {
+            if (result.status === 200) {
+                return result.data;
             }
-        );
-    }
+        }
+    );
 };

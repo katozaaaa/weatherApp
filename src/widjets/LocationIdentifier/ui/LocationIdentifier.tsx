@@ -47,7 +47,7 @@ export const LocationIdentifier = (props: LocationIdentifierProps) => {
 
     useEffect(() => {
         searchLocationByIP();
-    }, []);
+    }, [ searchLocationByIP ]);
 
     return (
         <div className={ cn(styles.container, className) }>

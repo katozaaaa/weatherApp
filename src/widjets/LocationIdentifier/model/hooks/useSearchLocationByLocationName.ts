@@ -31,5 +31,10 @@ export const useSearchLocationByLocationName = (dispatchers: Dispatchers) => {
                 updateLocation,
                 setError
             );
-    }, []);
+    }, [
+        updateLocation,
+        dispatchLocationCoords,
+        clearWeather,
+        setError
+    ]);
 };

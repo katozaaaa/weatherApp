@@ -5,7 +5,6 @@ import { resolve } from 'path';
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd(), '');
-    const mockIp = env.VITE_MOCK_IP;
 
     return {
         plugins: [
@@ -17,13 +16,16 @@ export default defineConfig(({ mode }) => {
             }
         },
         define: {
-            __MOCK_IP__: JSON.stringify(mockIp)
+            __API_BASE_URL__: JSON.stringify(env.VITE_API_BASE_URL)
         },
         css: {
             modules: {
                 localsConvention: 'camelCase',
                 generateScopedName: '[name]__[local]___[hash:base64:5]'
             }
+        },
+        server: {
+            port: 8080
         }
     };
 });
