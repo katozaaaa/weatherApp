@@ -1,0 +1,33 @@
+@use 'sass:map';
+@use '@/shared/styles/variables.scss' as v;
+
+.container {
+    display: flex;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+
+    svg path {
+        fill: map.get(v.$color, 'white', 'transparent', '60');
+        transition: all 150ms ease-out;
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            svg path {
+                fill: map.get(v.$color, 'white', 'regular');
+            }
+        }
+    }
+
+    &[disabled="disabled"],
+    &:disabled {
+        cursor: default;
+        user-select: none;
+
+        svg path {
+            fill: map.get(v.$color, 'white', 'transparent', '30');
+        }
+    }
+}

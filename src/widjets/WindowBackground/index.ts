@@ -1,0 +1,1 @@
+export { WindowBackground } from './ui/WindowBackground';

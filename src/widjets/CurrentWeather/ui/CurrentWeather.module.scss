@@ -1,0 +1,60 @@
+@use 'sass:map';
+@use '@/shared/styles/variables.scss' as v;
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+}
+
+.top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+}
+
+.temp {
+    font-size: 128px;
+    font-weight: 500;
+    letter-spacing: 10px;
+    font-family: map.get(v.$font-family, 'secondary');
+}
+
+.description-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    max-width: 300px;
+}
+
+.description {
+    font-size: 36px;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.feels-like {
+    font-weight: 700;
+    color: map.get(v.$color, 'white', 'transparent', '60');
+}
+
+.bottom {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+    padding-block: 10px;
+}
+
+.icon {
+    position: relative;
+    min-width: 170px;
+    min-height: 200px;
+
+    img {
+        position: absolute;
+        top: 32px;
+    }
+}

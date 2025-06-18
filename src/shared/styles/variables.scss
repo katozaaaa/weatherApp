@@ -1,1 +1,23 @@
 @use 'sass:map';
+
+$font-family: (
+    'primary': ("Roboto Flex", serif),
+    'secondary': ("Inter", serif),
+);
+
+$color: (
+    'white': (
+        'regular': #FFFFFF,
+        'transparent': (
+            '60': #FFFFFF99,
+            '30': #FFFFFF4D,
+            '10': #FFFFFF10,
+        ),
+    ),
+    'black': (
+        'regular': #000000,
+        'transparent': (
+            '40': #00000066,
+        )
+    )
+)
