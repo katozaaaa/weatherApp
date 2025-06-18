@@ -53,7 +53,7 @@ export const App = () => {
                     <div className={ styles.notifications }>
                         <div className={ styles.error }>
                             <span> An error has occurred </span>
-                            <span> Reason: { error.response.data.error } </span>
+                            <span> Reason: { error.message } </span>
                         </div>
                     </div>
                 ) : (
