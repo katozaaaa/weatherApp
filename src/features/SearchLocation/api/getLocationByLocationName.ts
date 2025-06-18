@@ -19,9 +19,7 @@ export const getLocationByLocationName: GetLocationByLocationName = async (locat
         }
     ).then(
         (result) => {
-            if (result.status === 200) {
-                return result.data;
-            }
+            return result.data;
         }
     );
 };

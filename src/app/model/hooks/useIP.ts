@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { getIP } from '../../api/getIP';
 
 export const useIP = () => {
-    const [ IP, setIP ] = useState(null);
+    const [ IP, setIP ] = useState<string | null>(null);
 
     useEffect(() => {
         const expire = { current: false };

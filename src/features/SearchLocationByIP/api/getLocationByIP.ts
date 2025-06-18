@@ -8,9 +8,7 @@ export const getLocationByIP: GetLocationByIP = async (IP) => {
         params: { ip: IP }
     }).then(
         (result) => {
-            if (result.status === 200) {
-                return result.data;
-            }
+            return result.data;
         }
     );
 };

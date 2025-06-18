@@ -28,9 +28,7 @@ export const getWeather: GetWeather = async (locationCoords) => {
         }
     ).then(
         (result) => {
-            if (result.status === 200) {
-                return result.data;
-            }
+            return result.data;
         }
     );
 };
