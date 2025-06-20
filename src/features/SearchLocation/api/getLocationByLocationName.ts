@@ -17,12 +17,5 @@ export const getLocationByLocationName: GetLocationByLocationName = async (locat
                 name: locationName
             }
         }
-    ).then(
-        (result) => {
-            return result.data;
-        },
-        (error) => {
-            throw new Error(error.response.data.error);
-        }
     );
 };

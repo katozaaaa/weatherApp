@@ -8,9 +8,9 @@ export const useIP = () => {
         const expire = { current: false };
 
         getIP().then(
-            (result) => {
+            (data) => {
                 if (!expire.current) {
-                    setIP(result.ip);
+                    setIP(data.ip);
                 }
             }
         );
