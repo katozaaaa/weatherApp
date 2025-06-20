@@ -1,10 +1,10 @@
-name: Build
+name: Test build
 
 on:
   push:
-    branches: [ "main", "master", "dev" ]
+    branches: [ "dev" ]
   pull_request:
-    branches: [ "main", "master", "dev" ]
+    branches: [ "dev" ]
 
 jobs:
   build:
@@ -31,4 +31,4 @@ jobs:
         run: npm run lint
 
       - name: Build the project
-        run: npm run build
+        run: tsc -b
