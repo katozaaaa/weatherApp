@@ -6,4 +6,5 @@ export * from './model/utils/getWindDirection';
 export * from './model/utils/getTimeOfDay';
 export * from './model/utils/getCloudsSlug';
 export * from './model/utils/getWeatherSlug';
+export * from './model/utils/getWeatherIconSrc';
 export { WeatherIcon } from './ui/WeatherIcon/WeatherIcon';
