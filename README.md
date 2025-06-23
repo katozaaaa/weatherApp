@@ -1,50 +1,76 @@
-# React + TypeScript + Vite
+# 🌤 weatherApp
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![Live Demo](https://img.shields.io/badge/demo-live-green.svg)](https://katozaaaa.github.io/weatherApp/)
+[![Frontend Repo](https://img.shields.io/badge/frontend-repo-blue.svg)](https://github.com/katozaaaa/weatherApp)
+[![Backend Repo](https://img.shields.io/badge/backend-repo-orange.svg)](https://github.com/katozaaaa/weatherAppProxy)
 
-Currently, two official plugins are available:
+A responsive weather application built with React and TypeScript that provides current and forecasted weather data based on user location or search input.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![image](https://github.com/user-attachments/assets/5d38d4dc-5dfc-44cb-99c0-e83dd813d3ab)
 
-## Expanding the ESLint configuration
+## ✨ Key Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- 🌍 Automatic location detection
+- 🔍 Manual city search
+- 📈 Detailed weather forecasts
+- 📱 Mobile-friendly design
 
-- Configure the top-level `parserOptions` property like this:
+## 🛠 Tech Stack
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+| Technology       | Purpose                |
+|------------------|------------------------|
+| React 18         | Frontend framework     |
+| TypeScript 5     | Type safety            |
+| SCSS             | Styling                |
+| Vite             | Build tool             |
+| Axios/Fetch      | API requests           |
+
+## 🌍 API Integration
+
+The app uses the following third-party APIs to deliver weather data and location services:
+
+### Weather Data
+[![OpenWeatherMap](https://img.shields.io/badge/OpenWeatherMap-API-blue?logo=openweathermap&logoColor=white)](https://openweathermap.org/)
+- Provides current weather and forecasts
+- Returns temperature, humidity, wind speed, and weather conditions
+- Free tier available with API key
+
+### Location Services
+[![GeoNames](https://img.shields.io/badge/GeoNames-API-lightgrey?logo=openstreetmap&logoColor=blue)](https://www.geonames.org/)
+- Converts city names to geographic coordinates
+- Supports autocomplete for location search
+- Free tier available with username registration
+
+[![ipapi.co](https://img.shields.io/badge/ipapi.co-API-green)](https://ipapi.co/)
+- Detects user location by IP address
+- Returns city, country, and coordinates
+- Free tier available (1000 requests/day)
+
+## 🚀 Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/katozaaaa/weatherApp.git
+```
+2. Go to the project folder:
+```bash
+cd weatherApp
+```
+3. Install dependencies:
+```bash
+npm install
+```
+4. Start the development server:
+```bash
+npm run dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## 🛠 Available Commands
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+| Command           | Description                     |
+|-------------------|---------------------------------|
+| `npm run dev`     | Start development server        |
+| `npm run build`   | Create production build         |
+| `npm run lint`    | Run ESLint                      |
+| `npm run lint:fix`| Auto-fix linting errors         |
+| `npm run preview` | Preview production build        |
