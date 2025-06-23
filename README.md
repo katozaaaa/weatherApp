@@ -30,24 +30,27 @@ A responsive weather application built with React and TypeScript that provides c
 The app uses the following third-party APIs to deliver weather data and location services:
 
 ### Weather Data
-[![OpenWeatherMap](https://img.shields.io/badge/OpenWeatherMap-API-blue?logo=openweathermap&logoColor=white)](https://openweathermap.org/)
+[![OpenWeatherMap](https://img.shields.io/badge/OpenWeatherMap-API-blue?logo=openweathermap&logoColor=blue)](https://openweathermap.org/)
 - Provides current weather and forecasts
 - Returns temperature, humidity, wind speed, and weather conditions
 - Free tier available with API key
 
 ### Location Services
-[![GeoNames](https://img.shields.io/badge/GeoNames-API-lightgrey?logo=openstreetmap&logoColor=blue)](https://www.geonames.org/)
+[![GeoNames](https://img.shields.io/badge/GeoNames-API-blue?logo=openstreetmap&logoColor=blue)](https://www.geonames.org/)
 - Converts city names to geographic coordinates
 - Supports autocomplete for location search
 - Free tier available with username registration
 
-[![ipapi.co](https://img.shields.io/badge/ipapi.co-API-green)](https://ipapi.co/)
+[![ipapi.co](https://img.shields.io/badge/ipapi.co-API-blue)](https://ipapi.co/)
 - Detects user location by IP address
 - Returns city, country, and coordinates
 - Free tier available (1000 requests/day)
 
-## 🚀 Installation
-
+## 🚀 Quick Start
+### Prerequisites
+- Node.js v20.11.1
+- Backend server running
+### Installation
 1. Clone the repository:
 ```bash
 git clone https://github.com/katozaaaa/weatherApp.git
