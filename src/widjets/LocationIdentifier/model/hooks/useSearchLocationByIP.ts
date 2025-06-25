@@ -1,50 +1,58 @@
 import { useCallback, Dispatch, SetStateAction } from 'react';
 import { getLocationByIP } from '@/features/SearchLocationByIP';
 import { LocationData } from '@/features/SearchLocation';
+import { useQueryClient } from '@tanstack/react-query';
 
-interface Dispatchers {
+interface Props {
     updateLocation: (location: LocationData | null) => void,
     setIsSearching:  Dispatch<SetStateAction<boolean>>,
-    clearWeather: () => void,
     setError: (error: Error | null) => void,
     IP: string | null
 }
 
-export const useSearchLocationByIP = (dispatchers: Dispatchers) => {
+export const useSearchLocationByIP = (props: Props) => {
     const {
         updateLocation, 
-        setIsSearching, 
-        clearWeather,
+        setIsSearching,
         setError,
         IP
-    } = dispatchers;
+    } = props;
+
+    const queryClient = useQueryClient();
 
     return useCallback(() => {
         if (!IP) {
             return;
         }
 
-        setIsSearching(true);
-
-        getLocationByIP(IP)
-            .then(
-                (location) => {
-                    setError(null);
-                    updateLocation(location);
-                },
-                (error) => {
-                    setError(error);
-                    updateLocation(null);
-                }
-            )
-            .finally(() => {
+        queryClient.fetchQuery({
+            queryKey: [ 'location', {
+                ip: IP
+            } ],
+            queryFn: () => {
+                setIsSearching(true);
+                return getLocationByIP(IP);
+            },
+            staleTime: 360000,
+            gcTime: 360000,
+        }).then(
+            (location) => {
+                setError(null);
+                updateLocation(location);
+            },
+            (error) => {
+                setError(error);
+                updateLocation(null);
+            }
+        ).finally(
+            () => {
                 setIsSearching(false);
-                clearWeather();
-            });
+            }
+        );
     }, [
+        queryClient,
         updateLocation,
         setIsSearching,
-        clearWeather,
         setError,
         IP
     ]);

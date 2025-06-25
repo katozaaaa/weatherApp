@@ -11,7 +11,6 @@ import { LocationCoordsAction } from '../model/reducers/locationCoordsReducer';
 interface LocationIdentifierProps {
     className?: string,
     dispatchLocationCoords: Dispatch<LocationCoordsAction>,
-    clearWeather: () => void,
     setError: (error: Error | null) => void,
     IP: string | null
 }
@@ -20,7 +19,6 @@ export const LocationIdentifier = (props: LocationIdentifierProps) => {
     const {
         className,
         dispatchLocationCoords,
-        clearWeather,
         setError,
         IP
     } = props;
@@ -36,7 +34,6 @@ export const LocationIdentifier = (props: LocationIdentifierProps) => {
     const searchLocationByIP = useSearchLocationByIP({
         updateLocation,
         setIsSearching,
-        clearWeather,
         setError,
         IP
     });
@@ -44,7 +41,6 @@ export const LocationIdentifier = (props: LocationIdentifierProps) => {
     const searchLocationByLocationName = useSearchLocationByLocationName({
         updateLocation,
         dispatchLocationCoords,
-        clearWeather,
         setError
     });
 
@@ -66,7 +62,6 @@ export const LocationIdentifier = (props: LocationIdentifierProps) => {
                     isSearching={ isSearching }
                 />
             )}
-
         </div>
     );
 };

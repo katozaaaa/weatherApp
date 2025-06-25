@@ -11,13 +11,17 @@
         "preview": "vite preview"
     },
     "dependencies": {
+        "@tanstack/react-query": "^5.81.2",
         "axios": "^1.10.0",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
-        "swiper": "^11.2.8"
+        "react-query": "^3.39.3",
+        "swiper": "^11.2.8",
+        "uninstall": "^0.0.0"
     },
     "devDependencies": {
         "@eslint/js": "^9.17.0",
+        "@tanstack/react-query-devtools": "^5.81.2",
         "@types/node": "^22.10.7",
         "@types/react": "^18.3.23",
         "@types/react-dom": "^18.3.7",

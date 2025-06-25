@@ -29,7 +29,7 @@ export default defineConfig(({ mode }) => {
             port: 8080
         },
         preview: {
-            port: 8080,
-        },
+            port: 8080
+        }
     };
 });
