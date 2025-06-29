@@ -1,25 +1,48 @@
 @use 'sass:map';
 @use '@/shared/styles/variables.scss' as v;
+@use '@/shared/styles/functions.scss' as f;
 
 .container {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: f.fluid(10px, 30px);
     width: 100%;
+
+    @media (max-width: 540px) {
+        display: contents;
+    }
 }
 
 .top {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 30px;
+    gap: f.fluid(20px, 30px);
+
+    @media (max-width: 540px) {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: f.fluid(10px, 30px);
+        padding-inline: f.fluid(15px, 30px)
+    }
 }
 
 .temp {
-    font-size: 128px;
+    font-size: f.fluid(64px, 128px);
     font-weight: 500;
     letter-spacing: 10px;
     font-family: map.get(v.$font-family, 'secondary');
+}
+
+.temp-icon-wrapper {
+    display: contents;
+
+    @media (max-width: 540px) {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: f.fluid(20px, 30px);
+    }
 }
 
 .description-wrapper {
@@ -30,7 +53,7 @@
 }
 
 .description {
-    font-size: 36px;
+    font-size: f.fluid(30px, 36px);
     font-weight: 700;
     text-transform: capitalize;
 }
@@ -44,17 +67,27 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 30px;
+    flex-wrap: wrap;
+    column-gap: f.fluid(20px, 30px);
+    row-gap: 10px;
     padding-block: 10px;
+
+    @media (max-width: 540px) {
+        padding-inline: f.fluid(15px, 30px)
+    }
 }
 
 .icon {
     position: relative;
-    min-width: 170px;
-    min-height: 200px;
+    min-width: f.fluid(120px, 170px);
+    aspect-ratio: 1;
 
     img {
         position: absolute;
-        top: 32px;
+        top: calc(12/200 * 100%);
+
+        @media (max-width: 540px) {
+            top: calc(6/200 * 100%);
+        }
     }
 }

@@ -34,7 +34,7 @@ export const useSearchLocationByIP = (props: Props) => {
                 return getLocationByIP(IP);
             },
             staleTime: 360000,
-            gcTime: 360000,
+            gcTime: 360000
         }).then(
             (location) => {
                 setError(null);

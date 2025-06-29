@@ -1,5 +1,6 @@
 @use 'sass:map';
 @use '@/shared/styles/variables.scss' as v;
+@use '@/shared/styles/functions.scss' as f;
 
 .slider {
     & :global(.swiper-wrapper) {
@@ -38,7 +39,7 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-    padding: 20px;
+    padding: f.fluid(10px, 20px);
     width: 100%;
     text-align: center;
     font-size: 16px;

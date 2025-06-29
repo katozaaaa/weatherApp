@@ -44,14 +44,31 @@ export const ForecastWeather = (props: ForecastWeatherProps) => {
                     momentumRatio: 0.5,
                     momentumVelocityRatio: 0.5
                 } }
-                slidesPerView={ 12 }
+                slidesPerView={ 4 }
                 grabCursor={ true }
                 autoHeight={ true }
                 resistanceRatio={ 0 }
                 scrollbar={ {
                     hide: false,
                     draggable: true,
-                    dragSize: 200
+                    dragSize: 60
+                } }
+                breakpoints={ {
+                    361: {
+                        slidesPerView: 6
+                    },
+                    541: {
+                        slidesPerView: 8
+                    },
+                    768: {
+                        slidesPerView: 10,
+                        scrollbar: {
+                            dragSize: 200
+                        }
+                    },
+                    999: {
+                        slidesPerView: 12
+                    }
                 } }
                 wrapperTag={ 'ul' }
             >

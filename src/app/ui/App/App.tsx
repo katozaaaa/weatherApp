@@ -53,7 +53,10 @@ export const App = () => {
                 } }
             >
                 <div className={ styles.window }>
-                    <div className={ styles.main }>
+                    <div className={ cn(
+                        styles.main,
+                        !displayWeather && styles.mainDisplayContents
+                    ) }>
                         <div className={ styles.header }>
                             {displayWeather && (
                                 <CurrentTime timezone={ weather.data!.current?.timezone } />
@@ -65,8 +68,8 @@ export const App = () => {
                                 IP={ IP }
                             />
                         </div>
-                        {displayWeather && (
-                            <div className={ styles.body }>
+                        { displayWeather && (
+                            <div className={ styles.content }>
                                 <CurrentWeather currentWeather={ weather.data!.current } />
                             </div>
                         )}

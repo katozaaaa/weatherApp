@@ -1,5 +1,6 @@
 @use 'sass:map';
 @use '@/shared/styles/variables.scss' as v;
+@use '@/shared/styles/functions.scss' as f;
 
 .wrapper {
     display: flex;
@@ -14,36 +15,77 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    gap: f.fluid(20px, 30px);
     max-width: 998px;
-    min-height: 506px;
+    min-height: 486px;
     width: 100%;
     background-color: map.get(v.$color, 'black', 'transparent', '40');
+
+    @media (max-width: 540px) {
+        min-height: 100vh;
+    }
 }
 
 .main {
-    position: relative;
+    display: contents;
+
+    @media (max-width: 540px) {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: f.fluid(20px, 30px);
+    }
+
+    &--display-contents {
+        display: contents;
+    }
+}
+
+.content {
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
-    gap: 30px;
-    padding: 30px;
+    justify-content: center;
+    gap: f.fluid(20px, 30px);
+    padding-inline: f.fluid(15px, 30px);
+
+    @media (max-width: 540px) {
+        display: contents;
+    }
 }
 
 .header {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    gap: 24px;
+    gap: f.fluid(10px, 20px);
+    padding-inline: f.fluid(15px, 30px);
+    margin-top: 30px;
+
+    @media (max-width: 540px) {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+    }
 }
 
 .location-identifier {
     margin-left: auto;
+
+    @media (max-width: 540px) {
+        margin-left: 0;
+    }
 }
 
 .body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-block: auto;
+
+    @media (max-width: 540px) {
+        display: contents;
+    }
 }
 
 .forecast-weather {
@@ -58,14 +100,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 30px;
+    padding: f.fluid(10px, 30px);
 }
 
 .loader, .error {
     position: absolute !important;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, calc(-50% - 30px));
+    transform: translate(-50%, calc(-50% - f.fluid(10px, 30px)));
 }
 
 .window-background {
@@ -83,13 +125,13 @@
 
     span {
         &:first-child {
-            font-size: 36px;
+            font-size: f.fluid(30px, 36px);
             font-weight: 700;
             line-height: 120%;
         }
 
         &:last-child {
-            font-size: 24px;
+            font-size: f.fluid(16px, 24px);
             font-weight: 700;
             line-height: 120%;
         }

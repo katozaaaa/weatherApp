@@ -10,15 +10,17 @@ export const CurrentWeather = ({ currentWeather }: CurrentWeatherProps) => {
     return (
         <div className={ styles.container }>
             <div className={ styles.top }>
-                <div className={ styles.temp }>
-                    {
-                        (currentWeather.main?.temp > 0 ? '+' : '')
-                        + Math.round(currentWeather.main?.temp)
-                        + '°'
-                    }
-                </div>
-                <div className={ styles.icon }>
-                    <WeatherIcon weatherData={ currentWeather }/>
+                <div className={ styles.tempIconWrapper }>
+                    <div className={ styles.temp }>
+                        {
+                            (currentWeather.main?.temp > 0 ? '+' : '')
+                            + Math.round(currentWeather.main?.temp)
+                            + '°'
+                        }
+                    </div>
+                    <div className={ styles.icon }>
+                        <WeatherIcon weatherData={ currentWeather }/>
+                    </div>
                 </div>
                 <div className={ styles.descriptionWrapper }>
                     <div className={ styles.description }>

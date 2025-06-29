@@ -4,6 +4,10 @@
 .container {
     position: relative;
 
+    @media (max-width: 540px) {
+        width: 100%;
+    }
+
     &--searching {
         &:before {
             visibility: visible;
@@ -39,6 +43,10 @@
     font-size: 16px;
     background-color: transparent;
     color: map.get(v.$color, 'white', 'transparent', '60');
+
+    @media (max-width: 540px) {
+        min-width: 100%;
+    }
 }
 
 .container input {
