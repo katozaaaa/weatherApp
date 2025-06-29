@@ -22,7 +22,7 @@
     background-color: map.get(v.$color, 'black', 'transparent', '40');
 
     @media (max-width: 540px) {
-        min-height: 100vh;
+        min-height: 100svh;
     }
 }
 
