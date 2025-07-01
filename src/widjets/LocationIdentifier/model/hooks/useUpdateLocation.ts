@@ -13,14 +13,19 @@ export const useUpdateLocation = (dispatchers: Dispatchers) => {
         dispatchLocationCoords
     } = dispatchers;
 
-    return useCallback((location: LocationData | null) => {
-        if (location) {
+    return useCallback((location: LocationData) => {
+        if (
+            location.lat &&
+            location.lon &&
+            (location.placeName || location.countryName)
+        ) {
             dispatchLocationName({
                 type: 'updated',
                 locationName: [
                     location.placeName,
-                    location.countryName || ''
-                ].join(', ')
+                    location.placeName && location.countryName ? ', ' : '',
+                    location.countryName
+                ].filter(Boolean).join('')
             });
 
             dispatchLocationCoords({

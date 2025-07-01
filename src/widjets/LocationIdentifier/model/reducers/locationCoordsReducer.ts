@@ -1,6 +1,6 @@
 export interface LocationCoordsState {
-    lat: number | null,
-    lon: number | null
+    lat?: number,
+    lon?: number
 }
 
 export interface LocationCoordsAction {
@@ -21,10 +21,7 @@ export const locationCoordsReducer = (state: LocationCoordsState, action: Locati
             return state;
         }
         case 'cleared': {
-            return {
-                lat: null,
-                lon: null
-            };
+            return { };
         }
         default: {
             return state;

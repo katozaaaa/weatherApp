@@ -1,4 +1,8 @@
-export const getWeatherSlug = (weatherData: { [index: string]: any }) => {
+interface WeatherData {
+    [index: string]: any
+}
+
+export const getWeatherSlug = (weatherData: WeatherData) => {
     const weatherId = weatherData.weather[0].id;
 
     if (weatherId === 800) {

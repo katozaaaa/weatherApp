@@ -5,7 +5,7 @@ import { getWeatherIconSrc } from '@/shared';
 interface WeatherIconProps {
     className?: string;
     weatherData: {
-        [index: string]: any
+        [index: string]: any | undefined
     }
 }
 

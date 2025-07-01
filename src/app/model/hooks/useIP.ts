@@ -1,8 +1,12 @@
 import { useState, useEffect } from 'react';
 import { getIP } from '../../api/getIP';
 
+interface IP {
+    value?: string
+}
+
 export const useIP = () => {
-    const [ IP, setIP ] = useState<string | null>(null);
+    const [ IP, setIP ] = useState<IP>({});
 
     useEffect(() => {
         const expire = { current: false };
@@ -10,7 +14,9 @@ export const useIP = () => {
         getIP().then(
             (data) => {
                 if (!expire.current) {
-                    setIP(data.ip);
+                    setIP({
+                        value: data.ip
+                    });
                 }
             }
         );

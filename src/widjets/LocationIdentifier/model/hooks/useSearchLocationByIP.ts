@@ -4,27 +4,25 @@ import { LocationData } from '@/features/SearchLocation';
 import { useQueryClient } from '@tanstack/react-query';
 
 interface Props {
-    updateLocation: (location: LocationData | null) => void,
+    updateLocation: (location: LocationData) => void,
     setIsSearching:  Dispatch<SetStateAction<boolean>>,
-    setError: (error: Error | null) => void,
-    IP: string | null
+    setErrors: (errors: Error[]) => void,
+    IP: {
+        value?: string
+    }
 }
 
 export const useSearchLocationByIP = (props: Props) => {
     const {
         updateLocation, 
         setIsSearching,
-        setError,
+        setErrors,
         IP
     } = props;
 
     const queryClient = useQueryClient();
 
     return useCallback(() => {
-        if (!IP) {
-            return;
-        }
-
         queryClient.fetchQuery({
             queryKey: [ 'location', {
                 ip: IP
@@ -37,12 +35,12 @@ export const useSearchLocationByIP = (props: Props) => {
             gcTime: 360000
         }).then(
             (location) => {
-                setError(null);
+                setErrors([]);
                 updateLocation(location);
             },
             (error) => {
-                setError(error);
-                updateLocation(null);
+                setErrors([ error ]);
+                updateLocation({ });
             }
         ).finally(
             () => {
@@ -53,7 +51,7 @@ export const useSearchLocationByIP = (props: Props) => {
         queryClient,
         updateLocation,
         setIsSearching,
-        setError,
+        setErrors,
         IP
     ]);
 };

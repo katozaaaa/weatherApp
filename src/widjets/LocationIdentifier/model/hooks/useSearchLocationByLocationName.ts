@@ -5,22 +5,22 @@ import { LocationCoordsAction } from '../reducers/locationCoordsReducer';
 import { useQueryClient } from '@tanstack/react-query';
 
 interface Dispatchers {
-    updateLocation: (location: LocationData | null) => void,
+    updateLocation: (location: LocationData) => void,
     dispatchLocationCoords: Dispatch<LocationCoordsAction>
-    setError: (error: Error | null) => void,
+    setErrors: (errors: Error[]) => void,
 }
 
 export const useSearchLocationByLocationName = (dispatchers: Dispatchers) => {
     const {
         updateLocation,
         dispatchLocationCoords,
-        setError
+        setErrors
     } = dispatchers;
 
     const queryClient = useQueryClient();
 
     return useCallback((locationName: string) => {
-        setError(null);
+        setErrors([]);
 
         queryClient.fetchQuery({
             queryKey: [ 'location', {
@@ -37,12 +37,14 @@ export const useSearchLocationByLocationName = (dispatchers: Dispatchers) => {
             gcTime: 360000
         }).then(
             updateLocation,
-            setError
+            (error) => {
+                setErrors([ error ]);
+            }
         );
     }, [
         queryClient,
         updateLocation,
         dispatchLocationCoords,
-        setError
+        setErrors
     ]);
 };

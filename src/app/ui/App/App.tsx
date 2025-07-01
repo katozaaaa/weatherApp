@@ -22,26 +22,27 @@ import '@/shared/styles/index.scss';
 const queryClient = new QueryClient();
 
 export const App = () => {
-    const [ error, setError ] = useState<Error | null>(null);
+    const [ errors, setErrors ] = useState<Error[]>([]);
     const IP = useIP();
     const [ locationCoords, dispatchLocationCoords ] = useLocationCoords();
 
     const weather = useWeather({
         queryClient,
         locationCoords,
-        setError
+        setErrors
     });
 
     const displayWeather = (
         weather.isSuccess &&
-        weather.data !== null &&
-        !error
+        weather.data.current &&
+        weather.data.forecast &&
+        errors.length === 0
     );
 
     const backgroundColor = useBackgroundColor(
         displayWeather
-            ? weather.data!.current
-            : null
+            ? weather.data.current!
+            : {}
     );
 
     return (
@@ -59,26 +60,26 @@ export const App = () => {
                     ) }>
                         <div className={ styles.header }>
                             {displayWeather && (
-                                <CurrentTime timezone={ weather.data!.current?.timezone } />
+                                <CurrentTime timezone={ weather.data!.current!.timezone } />
                             )}
                             <LocationIdentifier
                                 className={ styles.locationIdentifier }
                                 dispatchLocationCoords={ dispatchLocationCoords }
-                                setError={ setError }
+                                setErrors={ setErrors }
                                 IP={ IP }
                             />
                         </div>
                         { displayWeather && (
                             <div className={ styles.content }>
-                                <CurrentWeather currentWeather={ weather.data!.current } />
+                                <CurrentWeather currentWeather={ weather.data!.current! } />
                             </div>
                         )}
                     </div>
-                    {error ? (
+                    {errors.length > 0 ? (
                         <div className={ styles.notifications }>
                             <div className={ styles.error }>
                                 <span> An error has occurred </span>
-                                <span> Reason: { error.message } </span>
+                                <span> Reason: { errors[0].message } </span>
                             </div>
                         </div>
                     ) : (
@@ -86,11 +87,11 @@ export const App = () => {
                             <>
                                 <ForecastWeather
                                     className={ styles.forecastWeather }
-                                    forecastWeather={ weather.data!.forecast }
+                                    forecastWeather={ weather.data!.forecast! }
                                 />
                                 <WindowBackground
                                     className={ styles.windowBackground }
-                                    currentWeather={ weather.data!.current }
+                                    currentWeather={ weather.data!.current! }
                                 />
                             </>
                         ) : (

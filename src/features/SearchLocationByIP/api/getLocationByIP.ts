@@ -1,10 +1,18 @@
 import { LocationData } from '@/features/SearchLocation';
 import { client } from '@/shared';
 
-export type GetLocationByIP = (IP: string) => Promise<LocationData>;
+interface IP {
+    value?: string,
+}
 
-export const getLocationByIP: GetLocationByIP = async (IP) => {
+export type GetLocationByIP = (ip: IP) => Promise<LocationData>;
+
+export const getLocationByIP: GetLocationByIP = async (ip) => {
+    if (!ip.value) {
+        return { };
+    }
+
     return client.get('location', {
-        params: { ip: IP }
+        params: { ip: ip.value }
     });
 };

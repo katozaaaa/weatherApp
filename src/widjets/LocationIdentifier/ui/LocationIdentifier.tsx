@@ -11,15 +11,17 @@ import { LocationCoordsAction } from '../model/reducers/locationCoordsReducer';
 interface LocationIdentifierProps {
     className?: string,
     dispatchLocationCoords: Dispatch<LocationCoordsAction>,
-    setError: (error: Error | null) => void,
-    IP: string | null
+    setErrors: (error: Error[]) => void,
+    IP: {
+        value?: string
+    }
 }
 
 export const LocationIdentifier = (props: LocationIdentifierProps) => {
     const {
         className,
         dispatchLocationCoords,
-        setError,
+        setErrors,
         IP
     } = props;
 
@@ -34,14 +36,14 @@ export const LocationIdentifier = (props: LocationIdentifierProps) => {
     const searchLocationByIP = useSearchLocationByIP({
         updateLocation,
         setIsSearching,
-        setError,
+        setErrors,
         IP
     });
 
     const searchLocationByLocationName = useSearchLocationByLocationName({
         updateLocation,
         dispatchLocationCoords,
-        setError
+        setErrors
     });
 
     useEffect(() => {
@@ -56,7 +58,7 @@ export const LocationIdentifier = (props: LocationIdentifierProps) => {
                 searchLocationByLocationName={ searchLocationByLocationName }
                 isSearching={ isSearching }
             />
-            { IP && (
+            { IP.value && (
                 <SearchLocationByIP
                     searchLocationByIP={ searchLocationByIP }
                     isSearching={ isSearching }

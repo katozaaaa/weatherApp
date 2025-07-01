@@ -3,15 +3,15 @@ import { getCloudsSlug, getTimeOfDay } from '@/shared';
 import { colors } from '../data/colors';
 import { CurrentWeatherData } from '@/entities/Weather';
 
-export const useBackgroundColor = (currentWeather: CurrentWeatherData | null) => {
+export const useBackgroundColor = (currentWeather: CurrentWeatherData) => {
     return useMemo(() => {
-        if (!currentWeather) {
+        try {
+            const cloudsSlug = getCloudsSlug(currentWeather);
+            const timeOfDay = getTimeOfDay(currentWeather);
+
+            return colors[cloudsSlug][timeOfDay];
+        } catch {
             return colors.default;
         }
-
-        const cloudsSlug = getCloudsSlug(currentWeather);
-        const timeOfDay = getTimeOfDay(currentWeather);
-
-        return colors[cloudsSlug][timeOfDay];
     }, [ currentWeather ]);
 };
