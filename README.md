@@ -1,7 +1,6 @@
 # 🌤 weatherApp
 
 [![Live Demo](https://img.shields.io/badge/demo-live-green.svg)](https://katozaaaa.github.io/weatherApp/)
-[![Frontend Repo](https://img.shields.io/badge/frontend-repo-blue.svg)](https://github.com/katozaaaa/weatherApp)
 [![Backend Repo](https://img.shields.io/badge/backend-repo-orange.svg)](https://github.com/katozaaaa/weatherAppProxy)
 
 A responsive weather application built with React and TypeScript that provides current and forecasted weather data based on user location or search input.
@@ -17,13 +16,13 @@ A responsive weather application built with React and TypeScript that provides c
 
 ## 🛠 Tech Stack
 
-| Technology       | Purpose                |
-|------------------|------------------------|
-| React 18         | Frontend framework     |
-| TypeScript 5     | Type safety            |
-| SCSS             | Styling                |
-| Vite             | Build tool             |
-| Axios/Fetch      | API requests           |
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)
+![Axios](https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white)
+![React Query](https://img.shields.io/badge/React_Query-FF4154?style=for-the-badge&logo=reactquery&logoColor=white)
+![Fetch API](https://img.shields.io/badge/Fetch_API-FF6B6B?style=for-the-badge&logo=javascript&logoColor=white)
 
 ## 🌍 API Integration
 
@@ -47,23 +46,23 @@ The app uses the following third-party APIs to deliver weather data and location
 - Free tier available (1000 requests/day)
 
 ## 🚀 Quick Start
-### Prerequisites
+**Prerequisites**
 - Node.js v20.11.1
 - Backend server running
-### Installation
-1. Clone the repository:
+
+### 1. Clone the repository:
 ```bash
 git clone https://github.com/katozaaaa/weatherApp.git
 ```
-2. Go to the project folder:
+### 2. Go to the project folder:
 ```bash
 cd weatherApp
 ```
-3. Install dependencies:
+### 3. Install dependencies:
 ```bash
 npm install
 ```
-4. Start the development server:
+### 4. Start the development server:
 ```bash
 npm run dev
 ```
