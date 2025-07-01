@@ -67,7 +67,10 @@ export const ForecastWeather = (props: ForecastWeatherProps) => {
                         }
                     },
                     999: {
-                        slidesPerView: 12
+                        slidesPerView: 12,
+                        scrollbar: {
+                            dragSize: 200
+                        }
                     }
                 } }
                 wrapperTag={ 'ul' }
