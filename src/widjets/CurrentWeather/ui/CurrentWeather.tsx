@@ -1,5 +1,5 @@
 import styles from './CurrentWeather.module.scss';
-import { getWindDirection, WeatherIcon } from '@/shared';
+import { getWindDirection, WeatherIcon, hectopascalToMercuryMillimeters } from '@/shared';
 import { CurrentWeatherData } from '@/entities/Weather';
 
 interface CurrentWeatherProps {
@@ -46,7 +46,11 @@ export const CurrentWeather = ({ currentWeather }: CurrentWeatherProps) => {
                     Humidity { currentWeather.main?.humidity }%
                 </div>
                 <div>
-                    { currentWeather.main?.pressure } mmHg
+                    { Math.round(
+                        hectopascalToMercuryMillimeters(
+                            currentWeather.main?.pressure
+                        )
+                    )} mmHg
                 </div>
             </div>
         </div>

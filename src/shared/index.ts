@@ -7,4 +7,5 @@ export * from './model/utils/getTimeOfDay';
 export * from './model/utils/getCloudsSlug';
 export * from './model/utils/getWeatherSlug';
 export * from './model/utils/getWeatherIconSrc';
+export * from './model/utils/hectopascalToMercuryMillimeters';
 export { WeatherIcon } from './ui/WeatherIcon/WeatherIcon';

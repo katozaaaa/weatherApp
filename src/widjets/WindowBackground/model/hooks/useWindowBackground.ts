@@ -14,7 +14,7 @@ export const useWindowBackground = (currentWeather: CurrentWeatherData) => {
                 getTimeOfDay({
                     forecast: currentWeather.dt,
                     sunrise: currentWeather.sys.sunrise,
-                    sunset: currentWeather.sys.sunset,
+                    sunset: currentWeather.sys.sunset
                 })
             ].join('_')
         };

@@ -14,7 +14,7 @@ export const useBackgroundColor = (currentWeather: CurrentWeatherData) => {
             const timeOfDay = getTimeOfDay({
                 forecast: currentWeather.dt,
                 sunrise: currentWeather.sys.sunrise,
-                sunset: currentWeather.sys.sunset,
+                sunset: currentWeather.sys.sunset
             });
 
             return colors[cloudsSlug][timeOfDay];

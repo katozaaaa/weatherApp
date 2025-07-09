@@ -13,10 +13,10 @@ interface WeatherData {
 export const getWeatherIconSrc = (weatherData: WeatherData) => {
     const cloudsSlug = getCloudsSlug(
         weatherData.id,
-        weatherData.cloudsPercentage,
+        weatherData.cloudsPercentage
     );
 
-    const timeOfDay = getTimeOfDay(weatherData.time)
+    const timeOfDay = getTimeOfDay(weatherData.time);
     const weatherSlug = getWeatherSlug(weatherData.id);
 
     let slugs: string[] = [];
