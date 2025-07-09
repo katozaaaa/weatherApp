@@ -6,8 +6,16 @@ import { CurrentWeatherData } from '@/entities/Weather';
 export const useBackgroundColor = (currentWeather: CurrentWeatherData) => {
     return useMemo(() => {
         try {
-            const cloudsSlug = getCloudsSlug(currentWeather);
-            const timeOfDay = getTimeOfDay(currentWeather);
+            const cloudsSlug = getCloudsSlug(
+                currentWeather.weather[0].id,
+                currentWeather.clouds.all
+            );
+
+            const timeOfDay = getTimeOfDay({
+                forecast: currentWeather.dt,
+                sunrise: currentWeather.sys.sunrise,
+                sunset: currentWeather.sys.sunset,
+            });
 
             return colors[cloudsSlug][timeOfDay];
         } catch {

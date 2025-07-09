@@ -7,8 +7,15 @@ export const useWindowBackground = (currentWeather: CurrentWeatherData) => {
         return {
             fileName: [
                 'window-background',
-                getCloudsSlug(currentWeather),
-                getTimeOfDay(currentWeather)
+                getCloudsSlug(
+                    currentWeather.weather[0].id,
+                    currentWeather.clouds.all
+                ),
+                getTimeOfDay({
+                    forecast: currentWeather.dt,
+                    sunrise: currentWeather.sys.sunrise,
+                    sunset: currentWeather.sys.sunset,
+                })
             ].join('_')
         };
     }, [ currentWeather ]);

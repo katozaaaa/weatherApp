@@ -1,13 +1,23 @@
 import { getCloudsSlug, getTimeOfDay, getWeatherSlug } from '@/shared';
 
 interface WeatherData {
-    [index: string]: any
+    id: number,
+    cloudsPercentage: number,
+    time: {
+        forecast: number,
+        sunrise: number,
+        sunset: number,
+    }
 }
 
 export const getWeatherIconSrc = (weatherData: WeatherData) => {
-    const cloudsSlug = getCloudsSlug(weatherData);
-    const weatherSlug = getWeatherSlug(weatherData);
-    const timeOfDay = getTimeOfDay(weatherData);
+    const cloudsSlug = getCloudsSlug(
+        weatherData.id,
+        weatherData.cloudsPercentage,
+    );
+
+    const timeOfDay = getTimeOfDay(weatherData.time)
+    const weatherSlug = getWeatherSlug(weatherData.id);
 
     let slugs: string[] = [];
 

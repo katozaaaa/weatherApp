@@ -1,11 +1,13 @@
-interface WeatherData {
-    [index: string]: any
+interface Time {
+    forecast: number,
+    sunrise: number,
+    sunset: number,
 }
 
-export const getTimeOfDay = (weatherData: WeatherData) => {
+export const getTimeOfDay = (time: Time) => {
     if (
-        weatherData.dt * 1000 < weatherData.sys.sunrise * 1000 ||
-        weatherData.dt * 1000 >= weatherData.sys.sunset * 1000
+        time.forecast * 1000 < time.sunrise * 1000 ||
+        time.forecast * 1000 >= time.sunset * 1000
     ) {
         return 'night';
     }

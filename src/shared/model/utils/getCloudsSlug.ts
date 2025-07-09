@@ -1,15 +1,15 @@
-interface WeatherData {
-    [index: string]: any
-}
+type GetCloudsSlug = (
+    weatherId: number,
+    cloudsPercentage: number
+) => 'no-clouds' | 'scattered-clouds' | 'overcast-clouds';
 
-export const getCloudsSlug = (weatherData: WeatherData) => {
+export const getCloudsSlug: GetCloudsSlug = (weatherId, cloudsPercentage) => {
     if (
-        weatherData.weather &&
-        weatherData.weather[0].id === 800 &&
-        weatherData.clouds.all <= 25
+        weatherId === 800 &&
+        cloudsPercentage <= 25
     ) {
         return 'no-clouds';
-    } else if (weatherData.clouds.all <= 50) {
+    } else if (cloudsPercentage <= 50) {
         return 'scattered-clouds';
     } else {
         return 'overcast-clouds';

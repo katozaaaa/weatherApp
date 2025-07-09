@@ -22,7 +22,15 @@ export const WeatherIcon = (props: WeatherIconProps) => {
                     styles.container,
                     className
                 ) }
-                src={ getWeatherIconSrc(weatherData) }
+                src={ getWeatherIconSrc({
+                    id: weatherData.weather[0].id,
+                    cloudsPercentage: weatherData.clouds.all,
+                    time: {
+                        forecast: weatherData.dt,
+                        sunrise: weatherData.sys.sunrise,
+                        sunset: weatherData.sys.sunset
+                    }
+                }) }
             />
         </>
     );
