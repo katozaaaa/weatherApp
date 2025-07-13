@@ -1,7 +1,19 @@
-import { describe, test, expect } from 'vitest';
-import {toUTCMilliseconds} from '@/shared';
+import { describe, test, expect, beforeEach, vi, afterEach } from 'vitest';
+import { toUTCMilliseconds } from '@/shared';
 
 describe('To UTC milliseconds', () => {
+    let mockOffset;
+
+    beforeEach(() => {
+        mockOffset = vi
+            .spyOn(Date.prototype, 'getTimezoneOffset')
+            .mockImplementation(() => -180);
+    });
+
+    afterEach(() => {
+        mockOffset.mockRestore();
+    });
+
     test('throw error when date is null or undefined', () => {
         expect(() => toUTCMilliseconds(null as any)).toThrowError();
     });

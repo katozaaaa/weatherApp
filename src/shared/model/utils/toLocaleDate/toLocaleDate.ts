@@ -9,6 +9,6 @@ export const toLocaleDate = (date: Date, timezone: number) => {
         throw new Error('Timezone cannot be an null or undefined');
     }
 
-    const offset = date.getTimezoneOffset() * 60 * 1000;
-    return new Date(toUTCMilliseconds(date) + offset + timezone * 1000);
+    const offset = date.getTimezoneOffset() * 60;
+    return new Date(toUTCMilliseconds(date) + offset + timezone);
 };

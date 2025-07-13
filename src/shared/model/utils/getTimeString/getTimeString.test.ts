@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'vitest';
-import {getTimeString} from '@/shared';
+import { getTimeString } from '@/shared';
 
 describe('Get time string', () => {
     test('throw error when date is null or undefined', () => {

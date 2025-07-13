@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'vitest';
-import {getWeatherSlug} from '@/shared';
+import { getWeatherSlug } from '@/shared';
 
 describe('Get weather slug', () => {
     describe('throw error when', () => {

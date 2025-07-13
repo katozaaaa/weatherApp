@@ -1,7 +1,19 @@
-import { describe, test, expect } from 'vitest';
-import {toLocaleDate} from '@/shared';
+import { describe, test, expect, beforeEach, afterEach, vi } from 'vitest';
+import { toLocaleDate } from '@/shared';
 
 describe('To locale date', () => {
+    let mockOffset;
+
+    beforeEach(() => {
+        mockOffset = vi
+            .spyOn(Date.prototype, 'getTimezoneOffset')
+            .mockImplementation(() => -180);
+    });
+
+    afterEach(() => {
+        mockOffset.mockRestore();
+    });
+
     describe('throw error when', () => {
         test('date is null or undefined', () => {
             expect(
@@ -20,7 +32,7 @@ describe('To locale date', () => {
                 )
             ).toThrowError();
         });
-    })
+    });
 
     test('return December 17, 1995 03:24:00 when date is December 17, 1995 03:24:00 and timezone == 10800', () => {
         expect(

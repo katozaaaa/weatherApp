@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'vitest';
-import {hectopascalToMercuryMillimeters} from '@/shared';
+import { hectopascalToMercuryMillimeters } from '@/shared';
 
 describe('Hectopascal to mercury millimeters', () => {
     describe('throw error when', () => {

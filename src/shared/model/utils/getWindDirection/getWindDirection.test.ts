@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'vitest';
-import {getWindDirection} from '@/shared';
+import { getWindDirection } from '@/shared';
 
 describe('Get wind direction', () => {
     describe('throw error when', () => {

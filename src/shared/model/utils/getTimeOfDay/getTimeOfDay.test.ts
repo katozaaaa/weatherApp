@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'vitest';
-import {getTimeOfDay} from '@/shared';
+import { getTimeOfDay } from '@/shared';
 
 describe('Get time of day', () => {
     describe('throw error when', () => {
