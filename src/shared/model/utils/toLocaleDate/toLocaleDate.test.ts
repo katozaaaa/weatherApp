@@ -1,8 +1,8 @@
-import { describe, test, expect, beforeEach, afterEach, vi } from 'vitest';
+import { describe, test, expect, beforeEach, afterEach, vi, MockInstance } from 'vitest';
 import { toLocaleDate } from '@/shared';
 
 describe('To locale date', () => {
-    let mockOffset;
+    let mockOffset: MockInstance<Date['getTimezoneOffset']>;
 
     beforeEach(() => {
         mockOffset = vi
