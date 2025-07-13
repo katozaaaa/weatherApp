@@ -1,5 +1,3 @@
-import { toUTCMilliseconds } from '@/shared';
-
 export const toLocaleDate = (date: Date, timezone: number) => {
     if (date == null) {
         throw new Error('Date cannot be an null or undefined');
@@ -10,5 +8,5 @@ export const toLocaleDate = (date: Date, timezone: number) => {
     }
 
     const offset = date.getTimezoneOffset() * 60;
-    return new Date(toUTCMilliseconds(date) + offset + timezone);
+    return new Date(date.getTime() + (offset + timezone) * 1000);
 };

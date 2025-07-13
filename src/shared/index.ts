@@ -1,7 +1,6 @@
 export * from './api/client';
 export { getTimeString } from './model/utils/getTimeString/getTimeString.ts';
 export { toLocaleDate } from './model/utils/toLocaleDate/toLocaleDate.ts';
-export { toUTCMilliseconds } from './model/utils/toUTCMilliseconds/toUTCMilliseconds.ts';
 export { getWindDirection } from './model/utils/getWindDirection/getWindDirection.ts';
 export { getTimeOfDay } from './model/utils/getTimeOfDay/getTimeOfDay.ts';
 export { getCloudsSlug } from './model/utils/getCloudsSlug/getCloudsSlug.ts';
