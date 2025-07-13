@@ -5,6 +5,7 @@ describe('To locale date', () => {
     let mockOffset;
 
     beforeEach(() => {
+        vi.setSystemTime(new Date('December 17, 1995 03:24:00'));
         mockOffset = vi
             .spyOn(Date.prototype, 'getTimezoneOffset')
             .mockImplementation(() => -180);
@@ -34,12 +35,12 @@ describe('To locale date', () => {
         });
     });
 
-    test('return December 17, 1995 03:24:00 when date is December 17, 1995 03:24:00 and timezone == 10800', () => {
+    test(`return ${new Date('December 17, 1995 03:24:00')} when date is ${new Date('December 17, 1995 03:24:00')} and timezone == 10800`, () => {
         expect(
             toLocaleDate(
                 new Date('December 17, 1995 03:24:00'),
                 10800
             ).toString()
-        ).toBe('Sun Dec 17 1995 03:24:00 GMT+0300 (Moscow Standard Time)');
+        ).toBe((new Date('December 17, 1995 03:24:00')).toString());
     });
 });
