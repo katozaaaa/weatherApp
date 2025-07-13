@@ -5,7 +5,6 @@ describe('To locale date', () => {
     let mockOffset;
 
     beforeEach(() => {
-        vi.setSystemTime(new Date('December 17, 1995 03:24:00'));
         mockOffset = vi
             .spyOn(Date.prototype, 'getTimezoneOffset')
             .mockImplementation(() => -180);
