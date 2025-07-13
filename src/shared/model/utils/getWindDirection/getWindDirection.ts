@@ -1,4 +1,12 @@
 export const getWindDirection = (deg: number) => {
+    if (deg == null) {
+        throw new Error('Degrees cannot be an null or undefined ');
+    }
+
+    if (deg < 0 || deg > 360) {
+        throw new Error('Degrees cannot be less than 0 or more than 360');
+    }
+
     if (deg >= 337.5 || deg < 22.5) {
         return 'N';
     } else if (deg >= 22.5 && deg < 67.5) {

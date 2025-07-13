@@ -1,4 +1,8 @@
 export const getWeatherSlug = (weatherId: number) => {
+    if (weatherId == null || weatherId < 0) {
+        throw new Error('Weather ID cannot be an null, undefined or negative value\'');
+    }
+
     if (weatherId === 800) {
         return 'clear';
     } else if (weatherId > 800) {
